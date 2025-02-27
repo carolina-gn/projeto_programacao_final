@@ -1,0 +1,50 @@
+services:
+  app:
+    build: ./app
+    container_name: teste_app # alterar para seu projeto
+    restart: always
+    networks:
+      - mynetwork
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+    command: gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app
+  
+  web:
+    image: nginx:latest
+    container_name: teste_nginx_server # alterar para seu projeto
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./app:/app
+    networks:
+      - mynetwork
+    depends_on:
+      - app
+  
+  db:
+    image: mysql:latest
+    container_name: teste_mysql_db # alterar para seu projeto
+    restart: always
+    env_file:
+      - ./db/.env
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  db_data:
