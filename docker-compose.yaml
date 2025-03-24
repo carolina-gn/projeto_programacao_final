@@ -27,12 +27,12 @@ services:
   
   db:
     image: mysql:latest
-    container_name: teste_mysql_db # alterar para seu projeto
+    container_name: projeto_programacao_final # alterar para seu projeto
     restart: always
     env_file:
       - ./db/.env
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql  
     ports:
       - "3306:3306"
     networks:
