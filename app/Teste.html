@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Teste do Quizify </title>
+    <title> Quizify </title>
 
     <style>
         body {
@@ -18,18 +18,18 @@
         }
 
         h1 {
-            color: #000000;
+            color: #4b49af;
         }
 
         h2 {
-            color: #000000;
+            color: #4b49af;
         }
       
         h3 {
-            color: #000000;
+            color: #4b49af;
         }
         h4 {
-            color: #000000;
+            color: #4b49af;
         }
 
         .image-container {
@@ -37,16 +37,16 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            max-width: 1000px; /* Limita a largura para quebrar em duas linhas */
-            margin: 40px auto;
-            gap: 25px; /* Reduz o espaçamento horizontal */
+            max-width: 200px; /* Limita a largura para quebrar em duas linhas */
+            margin: 80px auto;
+            gap: 50px; /* Reduz o espaçamento horizontal */
         }
 
         .image-container img {
-            width: 120px; /* Ajuste para garantir duas linhas */
+            width: 240px; /* Ajuste para garantir duas linhas */
             height: auto;
             object-fit: contain;
-            border-radius: 50px;
+            border-radius: 200px;
             border-style:solid;
         }
 
@@ -56,7 +56,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: #378fbc;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -137,76 +137,105 @@
 </head>
 
 <body>
-    <h1>Esta página é dedicada a testes </h1>
-    <h2>Fase inicial</h2>
-    <h3>Primeira tentativa</h3>
-    <p>Página de teste de programação do trabalho final</p>
+    <h1> QUIZIFY </h1>
     
- <!-- Botão para abrir o menu -->
- <button class="open-btn" onclick="openMenu()">☰ Abrir Menu</button>
+    <div class="card" style="width: 18rem; margin-inline: auto;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
 
- <!-- Menu lateral -->
- <div id="menuLateral" class="menu">
-     <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
-     <a href="#">Home</a>
-     <a href="#">Sobre</a>
-     <a href="#">Serviços</a>
-     <a href="#">Contato</a>
- </div>
+        <br>
 
- <script>
-     // Função para abrir o menu
-     function openMenu() {
-         document.getElementById("menuLateral").style.width = "250px";
-     }
+      </div>
+      <div class="card" style="width: 18rem; margin-inline: auto;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
 
-     // Função para fechar o menu
-     function closeMenu() {
-         document.getElementById("menuLateral").style.width = "0";
-     }
- </script>
- 
-    <!DOCTYPE html>
-<html lang="pt">
-<head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo de Link</title>
-    <style>
-        a {
-            color: #000000; /* Altere para a cor desejada */
-            text-decoration: none; /* Remove o sublinhado */
-        }
+      <br>
 
-        a:hover {
-            color: #000000; /* Cor ao passar o mouse */
-            text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
-        }
-    </style>
-</head>
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>número de Jogadores</th>
-                <th>Nome Jogador</th>
-                
-            </tr>
-        </thead>
-    </table>
+      <div class="card" style="width: 18rem; margin-inline: auto;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      
+     <br>
+        <!-- Botão para abrir o menu -->
+        <button class="open-btn" onclick="openMenu()">☰ Abrir Menu</button>
+
+        <!-- Menu lateral -->
+        <div id="menuLateral" class="menu">
+            <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+            <a href="#">Login</a>
+            <a href="#">Categorias</a>
+            <a href="#">Rank</a>
+            <a href="#">Estatísticas</a>
+        </div>
+
+        <script>
+            // Função para abrir o menu
+            function openMenu() {
+                document.getElementById("menuLateral").style.width = "250px";
+            }
+
+            // Função para fechar o menu
+            function closeMenu() {
+                document.getElementById("menuLateral").style.width = "0";
+            }
+        </script>
+        
+            <!DOCTYPE html>
+        <html lang="pt">
+        <head>
+            
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Exemplo de Link</title>
+            <style>
+                a {
+                    color: #69aad6; /* Altere para a cor desejada */
+                    text-decoration: none; /* Remove o sublinhado */
+                }
+
+                a:hover {
+                    color: #0910a1; /* Cor ao passar o mouse */
+                    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+                }
+            </style>
+        </head>
+        <body>
+            <!--<table>
+                <thead>
+                    <tr>
+                        <th>número de Jogadores</th>
+                        <th>Nome Jogador</th>
+                        
+                    </tr>
+                </thead>
+            </table>-->
+            
     <a href="index.html">index</a>
 </body>
 </html>
 
  
-    <ol style="list-style-type: upper-roman;">
-        <li>Primeiro - Criação de uma página na web </li>
-        <li>Segundo - Design da página do Quizify </li>
-    </ol>
     
 <div class="image-container">
-    <img src="data:image/jpeg;base64,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" alt="HTML5">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/28/7f/f4/287ff43f-17c0-f328-3378-8d3b38ac4332/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png" alt="HTML5">
 </div>
    
 
