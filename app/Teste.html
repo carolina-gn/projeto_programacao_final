@@ -50,6 +50,56 @@
             border-style:solid;
         }
 
+        .menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        /* Links do menu */
+        .menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* Mudança de cor ao passar o mouse */
+        .menu a:hover {
+            background-color: #575757;
+        }
+
+        /* Botão de fechar */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Botão para abrir o menu */
+        .open-btn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
         footer {
             width: 100%;
             background-color: #bbb9cc;
@@ -92,10 +142,34 @@
     <h3>Primeira tentativa</h3>
     <p>Página de teste de programação do trabalho final</p>
     
+ <!-- Botão para abrir o menu -->
+ <button class="open-btn" onclick="openMenu()">☰ Abrir Menu</button>
+
+ <!-- Menu lateral -->
+ <div id="menuLateral" class="menu">
+     <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+     <a href="#">Home</a>
+     <a href="#">Sobre</a>
+     <a href="#">Serviços</a>
+     <a href="#">Contato</a>
+ </div>
+
+ <script>
+     // Função para abrir o menu
+     function openMenu() {
+         document.getElementById("menuLateral").style.width = "250px";
+     }
+
+     // Função para fechar o menu
+     function closeMenu() {
+         document.getElementById("menuLateral").style.width = "0";
+     }
+ </script>
  
     <!DOCTYPE html>
 <html lang="pt">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo de Link</title>
@@ -112,6 +186,15 @@
     </style>
 </head>
 <body>
+    <table>
+        <thead>
+            <tr>
+                <th>número de Jogadores</th>
+                <th>Nome Jogador</th>
+                
+            </tr>
+        </thead>
+    </table>
     <a href="index.html">index</a>
 </body>
 </html>
