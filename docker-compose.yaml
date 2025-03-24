@@ -1,7 +1,7 @@
 services:
   app:
     build: ./app
-    container_name: projeto_programacao_final  # alterar para seu projeto
+    container_name: projeto_programacao_final_app # alterar para seu projeto
     restart: always
     networks:
       - mynetwork
@@ -13,7 +13,7 @@ services:
   
   web:
     image: nginx:latest
-    container_name: projeto_programacao_final _nginx_server # alterar para seu projeto
+    container_name: projeto_programacao_final_nginx_server # alterar para seu projeto
     restart: always
     ports:
       - "80:80"
@@ -27,12 +27,12 @@ services:
   
   db:
     image: mysql:latest
-    container_name: projeto_programacao_final # alterar para seu projeto
+    container_name: projeto_programacao_final_db # alterar para seu projeto
     restart: always
     env_file:
       - ./db/.env
     volumes:
-      - db_data:/var/lib/mysql  
+      - db_data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
