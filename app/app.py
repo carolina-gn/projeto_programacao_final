@@ -33,6 +33,10 @@ def home():
 def show_user(username):
     return f"Agora lixou,{username}!"
 
+@app.route("/index")
+def sobre():
+    return render_template('index.html')
+
 @app.route('/base')
 def base():
     return render_template('base.html')
