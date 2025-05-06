@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<title>Quizzify</title>
+
+<style>
+:root{
+  /* podes mudar larguras aqui */
+  --sidebar-width: 230px;
+  --sidebar-width-collapsed: 60px;
+}
+
+/* ------ RESET BÁSICO ------ */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ------ HEADER ------ */
+header{
+  background:#f4f4f4;
+  padding:12px 0;
+  text-align:center;
+  font-size:2rem;
+  border-bottom:1px solid #ddd;
+}
+
+/* ------ CONTAINER PRINCIPAL ------ */
+.wrapper{
+  flex:1;
+  display:flex;
+  height:calc(100% - 60px); /* 60 ≈ altura do header */
+}
+
+/* ------ SIDEBAR ------ */
+.sidebar{
+  background:#e0e0e0;
+  width:var(--sidebar-width);
+  transition:width .25s ease;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  overflow:hidden;          /* esconde texto quando colapsado */
+}
+
+/* estado recolhido */
+.sidebar.collapsed{
+  width:var(--sidebar-width-collapsed);
+}
+
+/* botão “hambúrguer”  */
+.toggle-btn{
+  background:none;
+  border:none;
+  font-size:1.6rem;
+  cursor:pointer;
+  align-self:flex-end;
+}
+
+/* itens da sidebar */
+.sidebar button,
+.sidebar li{
+  background:#fff;
+  border:1px solid #ccc;
+  padding:8px;
+  font-size:1rem;
+  cursor:pointer;
+  list-style:none;
+}
+
+/* esconda o texto quando recolhido mas deixe ícones/emoji visível */
+.sidebar.collapsed button span,
+.sidebar.collapsed li span{
+  display:none;              /* oculta texto */
+}
+
+.sidebar ul{padding-left:0}
+
+/* ------ ÁREA PRINCIPAL ------ */
+main{
+  flex:1;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.box{
+  background:#f8f8f8;
+  border:1px solid #ccc;
+  padding:20px;
+  min-height:120px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="static/images/Quizzify.jpg" alt="">
+
+</header>
+
+<div class="wrapper">
+  <nav class="sidebar" id="sidebar">
+      <!-- Botão hambúrguer -->
+      <button class="toggle-btn" id="toggleBtn">☰</button>
+
+      <!-- Conteúdo do menu -->
+      <button><span>Login</span></button>
+
+      <strong><span>Categorias</span></strong>
+      <ul>
+        <li><span>Conhecimento Geral</span></li>
+        <li><span>Entretenimento</span></li>
+        <li><span>Desporto</span></li>
+        <li><span>Ciência</span></li>
+      </ul>
+
+      <button><span>RANK</span></button>
+      <button><span>ESTATÍSTICAS</span></button>
+
+      <button style="margin-top:auto;"><span>⚙️ Definições</span></button>
+  </nav>
+
+  <main>
+    <section class="box">Perguntas tipo</section>
+    <section class="box">FUN FACT</section>
+    <section class="box">RANK</section>
+  </main>
+</div>
+
+<script>
+/* --- JS para abrir/fechar o menu --- */
+const sidebar   = document.getElementById('sidebar');
+const toggleBtn = document.getElementById('toggleBtn');
+
+toggleBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('collapsed');
+});
+</script>
+
+</body>
+</html>
