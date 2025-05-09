@@ -2,8 +2,7 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <title>Quizzify - Perguntas</title>
-  <!-- Bootstrap 5 CDN -->
+  <title>Quizzify - Ciência</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     .option-btn {
@@ -30,38 +29,44 @@
   <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
     <div class="card shadow w-100" style="max-width: 600px;">
       <div class="card-body">
-        <h5 class="card-title text-center fw-bold mb-3"><img src="static/images/Quizzify.jpg" alt=""></h5>
+        <h5 class="card-title text-center fw-bold mb-3">QUIZZIFY - Ciência</h5>
         <p id="score" class="text-muted">Pontuação: 0</p>
         <h6 id="question" class="mb-4">Carregando pergunta...</h6>
         <div id="options" class="mb-3"></div>
-        <a class="btn btn-primary" href="/base.html" role="button">Página Inicial</a>
         <div class="d-flex justify-content-between">
           <button id="nextBtn" class="btn btn-primary" style="display: none;">Próxima Pergunta</button>
-          <a href="index.html" id="homeBtn" class="btn btn-success" style="display: none;">Voltar à Página Inicial</a>
+          <a href="base.html" id="homeBtn" class="btn btn-success" style="display: none;">Voltar à Página Inicial</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap Bundle (com Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
     const perguntas = [
       {
-        pergunta: "Qual é a capital de Portugal?",
-        opcoes: ["Lisboa", "Porto", "Faro", "Coimbra"],
-        correta: "Lisboa"
+        pergunta: "Qual é o elemento químico com símbolo 'O'?",
+        opcoes: ["Ouro", "Oxigênio", "Osmium", "Óxido"],
+        correta: "Oxigênio"
       },
       {
-        pergunta: "Em que ano o homem foi à Lua?",
-        opcoes: ["1965", "1969", "1972", "1959"],
-        correta: "1969"
+        pergunta: "Qual planeta é conhecido como o Planeta Vermelho?",
+        opcoes: ["Júpiter", "Vênus", "Marte", "Saturno"],
+        correta: "Marte"
       },
       {
-        pergunta: "Quem escreveu 'Dom Quixote'?",
-        opcoes: ["Shakespeare", "Camões", "Cervantes", "Machado de Assis"],
-        correta: "Cervantes"
+        pergunta: "Qual é a unidade básica da vida?",
+        opcoes: ["Átomo", "Célula", "Molécula", "Tecido"],
+        correta: "Célula"
+      },
+      {
+        pergunta: "Quem desenvolveu a teoria da relatividade?",
+        opcoes: ["Newton", "Einstein", "Galileu", "Tesla"],
+        correta: "Einstein"
+      },
+      {
+        pergunta: "A água é composta por quais elementos?",
+        opcoes: ["Hidrogênio e Oxigênio", "Carbono e Oxigênio", "Hidrogênio e Nitrogênio", "Hélio e Oxigênio"],
+        correta: "Hidrogênio e Oxigênio"
       }
     ];
 
@@ -119,7 +124,7 @@
     });
 
     function mostrarPontuacaoFinal() {
-      questionEl.textContent = `Fim do Quiz! 🎉 Obtiveste ${pontuacao} de ${perguntas.length} pontos.`;
+      questionEl.textContent = `🎉 Fim do Quiz! Obtiveste ${pontuacao} de ${perguntas.length} pontos.`;
       optionsEl.innerHTML = "";
       nextBtn.style.display = "none";
       homeBtn.style.display = "inline-block";
