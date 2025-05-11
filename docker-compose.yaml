@@ -1,49 +1,50 @@
 services:
   app:
     build: ./app
-    container_name: projeto_programacao_final_app # alterar para seu projeto
-    restart: always
+    container_name: projeto_programacao_app
+    env_file:
+      - ./db/.env
     networks:
-      - mynetwork
+      - flask-network
     volumes:
       - ./app:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy 
     command: gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app
   
   web:
     image: nginx:latest
-    container_name: projeto_programacao_final_nginx_server # alterar para seu projeto
-    restart: always
+    container_name: projeto_programacao-nginx_server
     ports:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./app:/app
     networks:
-      - mynetwork
+      - flask-network
     depends_on:
       - app
   
   db:
     image: mysql:latest
-    container_name: projeto_programacao_final_db # alterar para seu projeto
-    restart: always
+    container_name: projeto_programacao-mysql_db
     env_file:
       - ./db/.env
     volumes:
       - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "3306:3306"
+      - 3306:3306
     networks:
-      - mynetwork
+      - flask-network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 10s
       retries: 10
 
 networks:
-  mynetwork:
+  flask-network:
     driver: bridge
 
 volumes:
