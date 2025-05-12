@@ -1,7 +1,7 @@
 services:
   app:
     build: ./app
-    container_name: projeto_programacao_app
+    container_name: quizzify_app
     env_file:
       - ./db/.env
     networks:
@@ -15,7 +15,7 @@ services:
   
   web:
     image: nginx:latest
-    container_name: projeto_programacao-nginx_server
+    container_name: quizzify-nginx_server
     ports:
       - "80:80"
     volumes:
@@ -28,7 +28,7 @@ services:
   
   db:
     image: mysql:latest
-    container_name: projeto_programacao-mysql_db
+    container_name: quizzify-mysql_db
     env_file:
       - ./db/.env
     volumes:
