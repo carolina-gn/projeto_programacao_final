@@ -12,9 +12,9 @@ app.secret_key = '24e23c43d423c434343vfghfgd'
 
 # Configurações do banco de dados a partir das variáveis de ambiente
 app.config['MYSQL_HOST'] = os.getenv('DB_HOST', 'db')
-app.config['MYSQL_USER'] = os.getenv('DB_USER', 'flask_user')
-app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD', 'flask_password')
-app.config['MYSQL_DATABASE'] = os.getenv('DB_NAME', 'flask_db')
+app.config['MYSQL_USER'] = os.getenv('DB_USER', 'quizzify_user')
+app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD', 'quizzify_pass')
+app.config['MYSQL_DATABASE'] = os.getenv('DB_NAME', 'quizzify_db')
 
 
 # Configurações do upload
