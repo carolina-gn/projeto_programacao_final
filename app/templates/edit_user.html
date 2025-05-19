@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Editar Utilizador</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('update_user', user_id=user.id) }}" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nome de Utilizador</label>
+                            <input type="text" class="form-control" id="username" name="username" 
+                                   value="{{ user.username }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" 
+                                   value="{{ user.password }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                   value="{{ user.email }}" required>
+                        </div>                        
+                        <div class="mb-3">
+                            <label for="photo" class="form-label">Foto de Perfil</label>
+                            <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                            {% if user.photo %}
+                                <div class="mt-2">
+                                    <img src="{{ url_for('static', filename='images/uploads/' + user.photo) }}" 
+                                         alt="Foto atual" style="max-width: 100px;">
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Atualizar</button>
+                            <a href="{{ url_for('show_user') }}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
