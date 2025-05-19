@@ -7,7 +7,7 @@ FLUSH PRIVILEGES;
 
 -- Criação do banco de dados e tabela para o CRUD
 CREATE DATABASE IF NOT EXISTS flask_db;
-USE flask_db;
+USE quizzify_db;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,

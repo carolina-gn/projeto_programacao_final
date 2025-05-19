@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quizzify</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+ <style>
+    :root {
+      --sidebar-width: 240px;
+      --sidebar-width-collapsed: 65px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+    }
+
+    header {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #333;
+      border-bottom: 1px solid #ccc;
+    }
+
+    header img {
+      height: 50px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(114, 91, 183, 0.1);
+    background-color: #6a11cb;
+    }
+
+    .wrapper {
+      flex: 1;
+      display: flex;
+      height: calc(100% - 60px);
+    }
+
+    .sidebar {
+      background-color: #2c2f4a;
+      width: var(--sidebar-width);
+      transition: width 0.3s ease;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: var(--sidebar-width-collapsed);
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      align-self: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .sidebar button,
+    .sidebar li {
+      background: #44476a;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      list-style: none;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .sidebar button:hover,
+    .sidebar li:hover {
+      background: #5a5ea0;
+    }
+
+    .sidebar ul {
+      padding-left: 0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+    .sidebar.collapsed button span,
+    .sidebar.collapsed li span,
+    .sidebar.collapsed strong span {
+      display: none;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .box {
+      background: white;
+      color: #333;
+      border-radius: 12px;
+      padding: 25px;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="Quizzify.jpg" alt="Quizzify Logo">
+  </header>
+
+  <div class="wrapper">
+    <nav class="sidebar" id="sidebar">
+      <button class="toggle-btn" id="toggleBtn">☰</button>
+
+      <button><span>👤 Login</span></button>
+
+      <strong><span>📚 Categorias</span></strong>
+      <ul>
+        <li><a href=""><span>Perfil do Utilizador</span></a></li>
+        <li><a href="/app/index.html"><span>Página Inicial</span></a></li>
+        <li><a href=""><span>Sair</span></a></li>
+      </ul>
+
+      <button style="margin-top: auto;"><span>⚙️ Definições</span></button>
+    </nav>
+
+    <main>
+        <div class="box">
+            <h2>Definições</h2>
+            <p>Esta é a página de definições. Aqui você pode ajustar suas preferências.</p>
+            <p>Mais opções e configurações podem ser adicionadas aqui.</p>
+        </div>
+    
+        <div class="box">
+            <h2>Outras Definições</h2>
+            <p>Você pode adicionar mais seções ou opções conforme necessário.</p>
+        </div>
+    </main>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+  </script>
+
+</body>
+</html>
