@@ -106,7 +106,7 @@ button
     <h6>Rank</h6>
     <canvas id="userProgressChart" width="400" height="200" ></canvas>
 
-<button><a href="/index.html"><span>Go back</span></a></button>
+<button><a href="{{ url_for('dashboard') }}"><span>Go back</span></a></button>
  
 <script>
   const ctx = document.getElementById('userProgressChart').getContext('2d');

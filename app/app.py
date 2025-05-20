@@ -91,6 +91,50 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        email = request.form.get('email')
+        photo = request.files.get('photo')
+
+        if not username or not password or not email:
+            flash('Todos os campos são obrigatórios!', 'warning')
+            return redirect(url_for('register'))
+
+        try:
+            db = get_db()
+            cursor = db.cursor()
+
+            # Verificar se já existe
+            cursor.execute("SELECT id FROM users WHERE username = %s", (username,))
+            if cursor.fetchone():
+                flash('Nome de utilizador já existe!', 'warning')
+                return redirect(url_for('register'))
+
+            filename = None
+            if photo and allowed_file(photo.filename):
+                filename = secure_filename(photo.filename)
+                photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            cursor.execute("INSERT INTO users (username, password, email, photo) VALUES (%s, %s, %s, %s)",
+                           (username, password, email, filename))
+            db.commit()
+            flash('Conta criada com sucesso! Faça login.', 'success')
+            return redirect(url_for('login'))
+
+        except Exception as e:
+            db.rollback()
+            app.logger.error(f"Erro ao registrar: {e}")
+            flash('Erro ao criar conta.', 'danger')
+
+        finally:
+            cursor.close()
+            db.close()
+
+    return render_template('register.html')
+
 
 @app.route('/logout')
 def logout():
@@ -109,8 +153,56 @@ def dashboard():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
-    return render_template('index.html')
+    return render_template('principal.html')
 
+@app.route('/estatisticas')
+def estatisticas():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('estatisticas.html')
+
+@app.route('/C_G')
+def C_G():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('C_G.html')
+
+@app.route('/Entretenimento')
+def Entretenimento():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('Entretenimento.html')
+
+@app.route('/Desporto')
+def Desporto():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('Desporto.html')
+
+@app.route('/Ciência')
+def Ciência():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('Ciência.html')
+
+@app.route('/rank')
+def rank():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('rank.html')
+
+@app.route('/definicoes')
+def definicoes():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('definicoes.html')
 
 @app.route('/user')
 def show_user():

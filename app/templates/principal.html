@@ -137,32 +137,31 @@
     <nav class="sidebar" id="sidebar">
       <button class="toggle-btn" id="toggleBtn">☰</button>
 
-      <button><span>👤 Login</span></button>
+      <button><a href="{{ url_for('login') }}"><span>👤 Login</span></a></button>
 
       <strong><span>📚 Categorias</span></strong>
       <ul>
-        <li><a href="{{ url_for('show_user') }}"><span>Perfil do Utilizador</span></a></li>
-        <li><a href="{{ url_for('dashboard') }}"><span>Página Inicial</span></a></li>
-        <li><a href="{{ url_for('logout') }}"><span>Sair</span></a></li>
+        <li><a href="{{ url_for('C_G') }}"><span>🌍 Conhecimento Geral</span></a></li>
+        <li><a href="{{ url_for('Entretenimento') }}"><span>🎬 Entretenimento</span></a></li>
+        <li><a href="{{ url_for('Desporto') }}"><span>⚽ Desporto</span></a></li>
+        <li><a href="{{ url_for('Ciência') }}"><span>🔬 Ciência</span></a></li>
       </ul>
 
-      <button style="margin-top: auto;"><span>⚙️ Definições</span></button>
+      <button><a href="{{ url_for('rank') }}"><span>🏆 Rank</span></a></button>
+
+      <button><a href="{{ url_for('estatisticas') }}"><span>📊 Estatísticas</span></a></button>
+      <button><a href="{{ url_for('definicoes') }}" style="margin-top: auto;"><span>⚙️ Definições</span></a></button>
     </nav>
 
     <main>
-        <div class="box">
-            <h2>Definições</h2>
-            <p>Esta é a página de definições. Aqui você pode ajustar suas preferências.</p>
-            <p>Mais opções e configurações podem ser adicionadas aqui.</p>
-        </div>
-    
-        <div class="box">
-            <h2>Outras Definições</h2>
-            <p>Você pode adicionar mais seções ou opções conforme necessário.</p>
-        </div>
+      <section class="box">🤓 Perguntas tipo</section>
+      <section class="box">💡 Fun Fact</section>
+      <section class="box">🏅 Rank atual</section>
     </main>
   </div>
 
+  {% block content %}{% endblock %}
+  
   <script>
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggleBtn');
