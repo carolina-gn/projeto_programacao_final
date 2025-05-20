@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, render_template, redirect, url_for, flash, g, session
 import mysql.connector
 from werkzeug.utils import secure_filename
+from mysql.connector import IntegrityError
 
 
 app = Flask(__name__)
@@ -135,7 +136,41 @@ def register():
 
     return render_template('register.html')
 
+@app.route('/submit_score', methods=['POST'])
+def submit_score():
+    if 'user_id' not in session:
+        return {'status': 'error', 'message': 'Utilizador não autenticado'}, 401
 
+    data = request.get_json()
+    categoria = data.get('categoria')
+    pontuacao = data.get('pontuacao')
+
+    if not categoria or pontuacao is None:
+        return {'status': 'error', 'message': 'Dados incompletos'}, 400
+
+    try:
+        db = get_db()
+        cursor = db.cursor()
+
+        query = """
+        INSERT INTO pontuacoes (user_id, categoria, pontuacao)
+        VALUES (%s, %s, %s)
+        """
+        cursor.execute(query, (session['user_id'], categoria, pontuacao))
+        db.commit()
+        return {'status': 'success', 'message': 'Pontuação gravada com sucesso!'}
+
+    except mysql.connector.errors.IntegrityError:
+        return {'status': 'error', 'message': 'Pontuação já submetida para esta categoria'}, 409
+
+    except mysql.connector.Error as err:
+        db.rollback()
+        app.logger.error(f"Erro ao gravar pontuação: {err}")
+        return {'status': 'error', 'message': 'Erro de base de dados'}, 500
+
+    finally:
+        cursor.close()
+        
 @app.route('/logout')
 def logout():
     session.clear()
@@ -203,6 +238,13 @@ def definicoes():
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
     return render_template('definicoes.html')
+
+@app.route('/definicoes_base')
+def definicoes_base():
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+    return render_template('definicoes_base.html')
 
 @app.route('/user')
 def show_user():
@@ -409,14 +451,6 @@ def toggle_user(user_id):
         flash('Erro ao alterar estado do utilizador.', 'danger')
     
     return redirect(url_for('show_user'))
-
-
-@app.route("/sobre")
-def sobre():
-    if 'user_id' not in session:
-        flash('Por favor, faça login primeiro!', 'warning')
-        return redirect(url_for('login'))    
-    return render_template('sobre.html')
 
 
 @app.route('/busca', methods=['GET'])

@@ -137,30 +137,19 @@
     <nav class="sidebar" id="sidebar">
       <button class="toggle-btn" id="toggleBtn">☰</button>
 
-      <button><a href="{{ url_for('login') }}"><span>👤 Login</span></a></button>
-
       <strong><span>📚 Categorias</span></strong>
       <ul>
-        <li><a href="{{ url_for('C_G') }}"><span>🌍 Conhecimento Geral</span></a></li>
-        <li><a href="{{ url_for('Entretenimento') }}"><span>🎬 Entretenimento</span></a></li>
-        <li><a href="{{ url_for('Desporto') }}"><span>⚽ Desporto</span></a></li>
-        <li><a href="{{ url_for('Ciência') }}"><span>🔬 Ciência</span></a></li>
+        <li><a href="{{ url_for('show_user') }}"><span>Perfil do Utilizador</span></a></li>
+        <li><a href="{{ url_for('dashboard') }}"><span>Página Inicial</span></a></li>
       </ul>
 
-      <button><a href="{{ url_for('rank') }}"><span>🏆 Rank</span></a></button>
-
-      <button><a href="{{ url_for('estatisticas') }}"><span>📊 Estatísticas</span></a></button>
-      <button><a href="{{ url_for('definicoes') }}" style="margin-top: auto;"><span>⚙️ Definições</span></a></button>
+      <button style="margin-top: auto;"><a href="{{ url_for('logout') }}"><span>Sair</span></a></button>
     </nav>
-
+  
     <main>
-      <section class="box">🤓 Perguntas tipo</section>
-      <section class="box">💡 Fun Fact</section>
-      <section class="box">🏅 Rank atual</section>
+    {% block content %}{% endblock %}
     </main>
   </div>
-
-
   <script>
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggleBtn');

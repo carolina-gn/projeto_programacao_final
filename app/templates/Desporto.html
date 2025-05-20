@@ -162,13 +162,31 @@
       }
     });
 
-    function mostrarPontuacaoFinal() {
-      questionEl.textContent = `🏁 Terminaste o quiz! Pontuação final: ${pontuacao}/${perguntas.length}`;
-      optionsEl.innerHTML = "";
-      nextBtn.style.display = "none";
-      homeBtn.style.display = "inline-block";
-      atualizarPontuacao();
-    }
+  function mostrarPontuacaoFinal() {
+  questionEl.textContent = `🏁 Terminaste o quiz! Pontuação final: ${pontuacao}/${perguntas.length}`;
+  optionsEl.innerHTML = "";
+  nextBtn.style.display = "none";
+  homeBtn.style.display = "inline-block";
+  atualizarPontuacao();
+
+  // Enviar pontuação para o backend
+  fetch("/registar_pontuacao", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      pontuacao: pontuacao
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("Pontuação registada:", data);
+  })
+  .catch(err => {
+    console.error("Erro ao registar pontuação:", err);
+  });
+  }
 
     carregarPergunta();
   </script>
