@@ -462,6 +462,37 @@ def busca():
     return f"Você buscou por: {termo}"
 
 
+@app.route('/save_score', methods=['GET', 'POST'])
+def save_score():
+    if request.method == 'POST':
+        pontuacao = request.form.get('pontuacao')
+        categoria = request.form.get('categoria')
+        user_id = session.get('user_id')
+
+        if not pontuacao or not categoria or not user_id:
+            flash('Dados incompletos!', 'warning')
+            return redirect(url_for('dashboard'))
+
+        try:
+            db = get_db()
+            cursor = db.cursor()
+            cursor.execute("INSERT INTO pontuacoes (user_id, categoria, pontuacao) VALUES (%s, %s, %s)",
+                           (user_id, categoria, pontuacao))
+            db.commit()
+            flash('Pontuação salva com sucesso!', 'success')
+        except IntegrityError:
+            db.rollback()
+            flash('Pontuação já existe para esta categoria!', 'warning')
+        except mysql.connector.Error as err:
+            db.rollback()
+            app.logger.error(f"Erro ao salvar pontuação: {err}")
+            flash('Erro ao salvar pontuação.', 'danger')
+        finally:
+            cursor.close()
+
+    return redirect(url_for('dashboard'))
+
+
 if __name__ == "__main__":
     # Cria a pasta de uploads se não existir
     if not os.path.exists(UPLOAD_FOLDER):

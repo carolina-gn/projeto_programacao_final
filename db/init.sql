@@ -19,14 +19,15 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
--- Tabela de pontuações 
 
+-- Tabela de pontuações 
 CREATE TABLE IF NOT EXISTS pontuacoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    utilizador_id INT NOT NULL,
+    user_id INT NOT NULL,
+    categoria INT NOT NULL,
     pontuacao INT NOT NULL,
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilizador_id) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 INSERT INTO users (username, email, password, photo, is_active)
