@@ -461,36 +461,63 @@ def busca():
     termo = request.args.get('q')
     return f"Você buscou por: {termo}"
 
+@app.route('/rank')
+def ranking():
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
 
-@app.route('/save_score', methods=['GET', 'POST'])
+    cursor.execute("""
+        SELECT u.nome, SUM(p.pontuacao) AS total_pontuacao
+        FROM pontuacoes p
+        JOIN users u ON p.user_id = u.id
+        GROUP BY u.nome
+        ORDER BY total_pontuacao DESC
+    """)
+    ranking_data = cursor.fetchall()
+
+    return render_template('rank.html', ranking=ranking_data)
+
+
+# Mapeamento de nomes de categorias para os seus IDs
+CATEGORIAS = {
+    "Ciência": 1,
+    "Questões Gerais": 2,
+    "Desporto": 3,
+    "Entretenimento": 4,
+}
+# Inverso: de ID para nome (para mostrar nas views)
+CATEGORIAS_NOME = {v: k.capitalize() for k, v in CATEGORIAS.items()}
+
+@app.route('/save_score', methods=['POST'])
 def save_score():
-    if request.method == 'POST':
-        pontuacao = request.form.get('pontuacao')
-        categoria = request.form.get('categoria')
-        user_id = session.get('user_id')
+    data = request.get_json()  # <- RECEBER JSON
+    pontuacao = data.get('pontuacao')
+    categoria = data.get('categoria')
+    user_id = session.get('user_id')
 
-        if not pontuacao or not categoria or not user_id:
-            flash('Dados incompletos!', 'warning')
-            return redirect(url_for('dashboard'))
+    app.logger.info(f"Recebido: pontuacao={pontuacao}, categoria={categoria}, user_id={user_id}")
 
-        try:
-            db = get_db()
-            cursor = db.cursor()
-            cursor.execute("INSERT INTO pontuacoes (user_id, categoria, pontuacao) VALUES (%s, %s, %s)",
-                           (user_id, categoria, pontuacao))
-            db.commit()
-            flash('Pontuação salva com sucesso!', 'success')
-        except IntegrityError:
-            db.rollback()
-            flash('Pontuação já existe para esta categoria!', 'warning')
-        except mysql.connector.Error as err:
-            db.rollback()
-            app.logger.error(f"Erro ao salvar pontuação: {err}")
-            flash('Erro ao salvar pontuação.', 'danger')
-        finally:
-            cursor.close()
+    if not pontuacao or not categoria or not user_id:
+        return jsonify({"message": "Dados incompletos!"}), 400
 
-    return redirect(url_for('dashboard'))
+    try:
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute(
+            "INSERT INTO pontuacoes (user_id, categoria, pontuacao) VALUES (%s, %s, %s)",
+            (user_id, int(categoria), int(pontuacao))
+        )
+        db.commit()
+        return jsonify({"message": "Pontuação salva com sucesso!"}), 200
+    except mysql.connector.IntegrityError:
+        db.rollback()
+        return jsonify({"message": "Pontuação já existe para esta categoria!"}), 409
+    except mysql.connector.Error as err:
+        db.rollback()
+        app.logger.error(f"Erro ao salvar pontuação: {err}")
+        return jsonify({"message": "Erro ao salvar pontuação."}), 500
+    finally:
+        cursor.close()
 
 
 if __name__ == "__main__":

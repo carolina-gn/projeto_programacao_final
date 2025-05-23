@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS pontuacoes (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+
 INSERT INTO users (username, email, password, photo, is_active)
 VALUES (
     'admin',

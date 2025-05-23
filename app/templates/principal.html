@@ -17,8 +17,6 @@
     <nav class="sidebar" id="sidebar">
       <button class="toggle-btn" id="toggleBtn">☰</button>
 
-      <button><a href="{{ url_for('login') }}"><span>👤 Login</span></a></button>
-
       <strong><span>📚 Categorias</span></strong>
       <ul>
         <li><a href="{{ url_for('C_G') }}"><span>🌍 Conhecimento Geral</span></a></li>
@@ -31,6 +29,7 @@
 
       <button><a href="{{ url_for('estatisticas') }}"><span>📊 Estatísticas</span></a></button>
       <button><a href="{{ url_for('definicoes') }}" style="margin-top: auto;"><span>⚙️ Definições</span></a></button>
+      <button><a href="{{ url_for('logout') }}"><span>👤 Sair </span></a></button>
     </nav>
      {% block content %}{% endblock %}
     <main>
