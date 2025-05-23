@@ -125,6 +125,16 @@
       font-size: 1.2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+
+    .box1 {
+      background: #cde9f3;
+      color: #333;
+      border-radius: 12px;
+      margin: 0 auto;
+      max-width: 300px;
+      font-size: 1.2rem;
+    }
+
   </style>
 </head>
 <body>
@@ -155,7 +165,7 @@
     </nav>
 
     <main>
-      <section> <img src="{{ url_for('static', filename='images/quizify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
+      <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
       <section class="box">🤓 Perguntas tipo</section>
       <section class="box">💡 Fun Fact</section>
       <section class="box">🏅 Rank atual</section>
