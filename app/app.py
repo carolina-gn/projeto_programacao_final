@@ -190,15 +190,8 @@ def dashboard():
         return redirect(url_for('login'))
     return render_template('principal.html')
 
-@app.route('/estatisticas')
-def estatisticas():
-    if 'user_id' not in session:
-        flash('Por favor, faça login primeiro!', 'warning')
-        return redirect(url_for('login'))
-    return render_template('estatisticas.html')
-
-@app.route('/C_G')
-def C_G():
+@app.route('/Conhecimento_Geral')
+def Conhecimento_Geral():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
@@ -225,13 +218,6 @@ def Ciência():
         return redirect(url_for('login'))
     return render_template('Ciência.html')
 
-@app.route('/rank')
-def rank():
-    if 'user_id' not in session:
-        flash('Por favor, faça login primeiro!', 'warning')
-        return redirect(url_for('login'))
-    return render_template('rank.html')
-
 @app.route('/definicoes')
 def definicoes():
     if 'user_id' not in session:
@@ -245,6 +231,76 @@ def definicoes_base():
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
     return render_template('definicoes_base.html')
+
+
+@app.route('/rank')
+def ranking():
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute("""
+    SELECT u.username, SUM(p.pontuacao) AS total_pontuacao
+    FROM pontuacoes p
+    JOIN users u ON p.user_id = u.id
+    GROUP BY u.username
+    ORDER BY total_pontuacao DESC
+""")
+
+    ranking_data = cursor.fetchall()
+
+    return render_template('rank.html', ranking=ranking_data)
+
+
+@app.route('/estatisticas')
+def estatisticas():
+    user_id = session.get('user_id')
+    if not user_id:
+        return redirect('/login')
+
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+
+    # Pontuação por categoria
+    cursor.execute("""
+        SELECT categoria, SUM(pontuacao) AS total
+        FROM pontuacoes
+        WHERE user_id = %s
+        GROUP BY categoria
+    """, (user_id,))
+    categoria_stats = cursor.fetchall()
+
+    # Usa o dicionário global CATEGORIAS_NOME
+    from app import CATEGORIAS_NOME  # ou garante que está acessível aqui
+
+    # Define o máximo possível por categoria
+    maximos_categoria = {
+        'Conhecimento Geral': 100,
+        'Entretenimento': 100,
+        'Desporto': 100,
+        'Ciência': 100
+    }
+
+    progresso = {}
+    for row in categoria_stats:
+        nome_categoria = CATEGORIAS_NOME.get(row['categoria'], 'Outra')
+        maximo = maximos_categoria.get(nome_categoria, 100)
+        progresso[nome_categoria] = int((row['total'] / maximo) * 100)
+
+    # Histórico de pontuações (últimos 5 quizzes)
+    cursor.execute("""
+        SELECT pontuacao, data FROM pontuacoes
+        WHERE user_id = %s
+        ORDER BY data DESC
+        LIMIT 5
+    """, (user_id,))
+    historico = cursor.fetchall()
+    historico.reverse()
+
+    # Formata as datas para o gráfico
+    for row in historico:
+        row['data'] = row['data'].strftime('%d/%m/%Y')
+
+    return render_template('estatisticas.html', progresso=progresso, historico=historico)
 
 @app.route('/user')
 def show_user():
@@ -461,27 +517,12 @@ def busca():
     termo = request.args.get('q')
     return f"Você buscou por: {termo}"
 
-@app.route('/rank')
-def ranking():
-    db = get_db()
-    cursor = db.cursor(dictionary=True)
-
-    cursor.execute("""
-        SELECT u.nome, SUM(p.pontuacao) AS total_pontuacao
-        FROM pontuacoes p
-        JOIN users u ON p.user_id = u.id
-        GROUP BY u.nome
-        ORDER BY total_pontuacao DESC
-    """)
-    ranking_data = cursor.fetchall()
-
-    return render_template('rank.html', ranking=ranking_data)
 
 
 # Mapeamento de nomes de categorias para os seus IDs
 CATEGORIAS = {
     "Ciência": 1,
-    "Questões Gerais": 2,
+    "Conhecimento Geral": 2,
     "Desporto": 3,
     "Entretenimento": 4,
 }
@@ -518,6 +559,7 @@ def save_score():
         return jsonify({"message": "Erro ao salvar pontuação."}), 500
     finally:
         cursor.close()
+
 
 
 if __name__ == "__main__":
