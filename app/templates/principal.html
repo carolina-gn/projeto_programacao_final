@@ -19,9 +19,6 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
       background-image: url("{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}");
       color: white;
     }
@@ -44,9 +41,9 @@
     }
 
     .wrapper {
-      flex: 1;
       display: flex;
-      height: calc(100% - 60px);
+      align-items: stretch;
+      min-height: 100vh;
     }
 
     .sidebar {
@@ -117,6 +114,11 @@
       gap: 20px;
     }
 
+    .content {
+      flex: 1;
+      padding: 20px;
+    }   
+
     .box {
       background: white;
       color: #333;
@@ -124,6 +126,11 @@
       padding: 25px;
       font-size: 1.2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;   /* vertical */
+      justify-content: center; /* horizontal */
+      text-align: center;
+      flex-direction: column;
     }
 
     .box1 {
@@ -133,6 +140,13 @@
       margin: 0 auto;
       max-width: 400px;
       font-size: 1.2rem;
+    }
+
+    .carousel-item img {
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
     }
     
 
@@ -165,9 +179,11 @@
       <button><a href="{{ url_for('definicoes') }}" style="margin-top: auto;"><span>⚙️ Definições</span></a></button>
     </nav>
 
-    <main>
+    <main class="content">
       <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
-      <section class="box">🤓 Perguntas tipo</section>
+      <section class="box">
+        <h2>🤓 Perguntas tipo</h2>
+      </section>
       <section class="box">
         <h2>💡 Fun Fact</h2>
 
@@ -218,7 +234,9 @@
           </button>
         </div>
       </section>
-      <section class="box">🏅 Rank atual</section>   
+      <section class="box">
+        <h2>🏅 Rank atual</h2>
+      </section>   
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
       </body>
       </html>
