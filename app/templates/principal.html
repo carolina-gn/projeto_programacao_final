@@ -91,7 +91,8 @@
       padding: 10px 0px 0px 0px;
       margin: 0;
       border: none;
-      box-shadow: none; 
+      box-shadow: none;
+      position: static;
     }
 
     .sidebar button:hover,
@@ -194,6 +195,37 @@
       font-size: 0.85rem; /* parágrafo menor */
     }
 
+    .img-logo {
+      min-width: 100px;
+      height: 100px;
+    }
+
+    .lista-perguntas {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .item {
+      background-color: #f2f2f2;
+      border-left: 5px solid #5a5ea0;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .pergunta {
+      font-weight: bold;
+      color: #2c2f4a;
+      margin-bottom: 8px;
+    }
+
+    .resposta {
+      margin: 0;
+      color: #555;
+    }
+
   </style>
 </head>
 <body>
@@ -207,6 +239,8 @@
     <nav class="sidebar" id="sidebar">
       <button class="toggle-btn" id="toggleBtn">☰</button>
 
+      <img src="{{ url_for('static', filename='images/ponto_de_interrogação_logo.png') }}" alt="ponto de interrogação">
+
       <button><a href="{{ url_for('login') }}"><span>👤 Login</span></a></button>
 
       <div class="dropdown">
@@ -214,26 +248,48 @@
           <span>📚 Categorias</span>
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{{ url_for('C_G') }}">🌍 Conhecimento Geral</a></li>
-          <li><a class="dropdown-item" href="{{ url_for('Entretenimento') }}">🎬 Entretenimento</a></li>
-          <li><a class="dropdown-item" href="{{ url_for('Desporto') }}">⚽ Desporto</a></li> 
-          <li><a class="dropdown-item" href="{{ url_for('Ciência') }}">🔬 Ciência</a></li>
+          <li><a class="dropdown-item" href="{{ url_for('C_G') }}"><span>🌍 Conhecimento Geral</span></a></li>
+          <li><a class="dropdown-item" href="{{ url_for('Entretenimento') }}"><span>🎬 Entretenimento</span></a></li>
+          <li><a class="dropdown-item" href="{{ url_for('Desporto') }}"><span>⚽ Desporto</span></a></li> 
+          <li><a class="dropdown-item" href="{{ url_for('Ciência') }}"><span>🔬 Ciência</span></a></li>
         </ul>
       </div>
 
       <button><a href="{{ url_for('rank') }}"><span>🏆 Rank</span></a></button>
 
       <button><a href="{{ url_for('estatisticas') }}"><span>📊 Estatísticas</span></a></button>
+      
       <button><a href="{{ url_for('definicoes') }}" style="margin-top: auto;"><span>⚙️ Definições</span></a></button>
     </nav>
 
     <main class="content">
       <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
       <section class="box">
-        <h2>🤓 Perguntas tipo</h2>
+       
+        <h2>Perguntas tipo</h2>
+        
+        <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_logo.png') }}" alt="">
+       
+        <div class="lista-perguntas">
+          <div class="item">
+            <p class="pergunta">Qual é a capital de França?</p>
+            <p class="resposta">Paris</p>
+          </div>
+
+          <div class="item">
+            <p class="pergunta">Quem pintou a Mona Lisa?</p>
+            <p class="resposta">Leonardo da Vinci</p>
+          </div>
+
+          <div class="item">
+            <p class="pergunta">Qual é o maior planeta do sistema solar?</p>
+            <p class="resposta">Júpiter</p>
+          </div>
+        </div>
+
       </section>
       <section class="box">
-        <h2>💡 Fun Fact</h2>
+        <h2>Fun Fact</h2>
 
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
@@ -283,7 +339,8 @@
         </div>
       </section>
       <section class="box">
-        <h2>🏅 Rank atual</h2>
+        <h2>Rank atual</h2>
+        <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_com_taça_logo.png') }}" alt="">
       </section>   
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
       </body>
