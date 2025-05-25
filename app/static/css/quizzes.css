@@ -1,11 +1,10 @@
    
    body {
-      background-image: "{{ url_for('static', filename='images/quizzifylogo.jpg') }}";
-      color: white;
+      background-image: "{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}";
     }
 
     .quiz-card {
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.799);
       color: black;
       border-radius: 16px;
       padding: 30px;
