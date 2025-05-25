@@ -142,6 +142,8 @@
       justify-content: center; /* horizontal */
       text-align: center;
       flex-direction: column;
+      width: 80%;
+      align-self: center;
     }
 
     .box1 {
@@ -203,27 +205,44 @@
     .lista-perguntas {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 25px;
       margin-top: 20px;
+      width: 100%;
+      text-align: left;
     }
 
     .item {
       background-color: #f2f2f2;
-      border-left: 5px solid #5a5ea0;
-      padding: 15px 20px;
-      border-radius: 10px;
+      border-left: 5px solid #7beab8;
+      padding: 20px 25px;
+      border-radius: 12px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+    }
+
+    .categoria {
+      font-size: 0.9rem;
+      color: #5a5ea0;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
 
     .pergunta {
       font-weight: bold;
       color: #2c2f4a;
-      margin-bottom: 8px;
+      margin: 8px 0;
     }
 
-    .resposta {
-      margin: 0;
-      color: #555;
+    .opções {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .opções li {
+      margin-bottom: 6px;
+      color: #333;
     }
 
   </style>
@@ -271,20 +290,51 @@
         <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_logo.png') }}" alt="">
        
         <div class="lista-perguntas">
+
           <div class="item">
-            <p class="pergunta">Qual é a capital de França?</p>
-            <p class="resposta">Paris</p>
+            <p class="categoria">🌍 Conhecimento Geral</p>
+            <p class="pergunta">Qual é o país com maior população do mundo?</p>
+            <ul class="opções">
+              <li>China</li>
+              <li>Índia</li>
+              <li>EUA</li>
+              <li>Indonésia</li>
+            </ul>
           </div>
 
           <div class="item">
-            <p class="pergunta">Quem pintou a Mona Lisa?</p>
-            <p class="resposta">Leonardo da Vinci</p>
+            <p class="categoria">🎬 Entretenimento</p>
+            <p class="pergunta">Quem interpretou o personagem Jack em "Titanic"?</p>
+            <ul class="opções">
+              <li>Leonardo DiCaprio</li>
+              <li>Brad Pitt</li>
+              <li>Tom Hanks</li>
+              <li>Johnny Depp</li>
+            </ul>
           </div>
 
           <div class="item">
-            <p class="pergunta">Qual é o maior planeta do sistema solar?</p>
-            <p class="resposta">Júpiter</p>
+            <p class="categoria">⚽ Desporto</p>
+            <p class="pergunta">Quantos jogadores uma equipa de futebol tem em campo?</p>
+            <ul class="opções">
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
           </div>
+
+          <div class="item">
+            <p class="categoria">🔬 Ciência</p>
+            <p class="pergunta">Qual é o elemento químico representado por "O"?</p>
+            <ul class="opções">
+              <li>Ouro</li>
+              <li>Oxigénio</li>
+              <li>Osso</li>
+              <li>Ozono</li>
+            </ul>
+          </div>
+
         </div>
 
       </section>
