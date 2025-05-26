@@ -190,12 +190,12 @@ def dashboard():
         return redirect(url_for('login'))
     return render_template('principal.html')
 
-@app.route('/Conhecimento_Geral')
-def Conhecimento_Geral():
+@app.route('/Conhecimento_geral')
+def Conhecimento_geral():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
-    return render_template('C_G.html')
+    return render_template('Conhecimento_geral.html')
 
 @app.route('/Entretenimento')
 def Entretenimento():
@@ -274,7 +274,7 @@ def estatisticas():
 
     # Define o máximo possível por categoria
     maximos_categoria = {
-        'Conhecimento Geral': 100,
+        'Conhecimento_geral': 100,
         'Entretenimento': 100,
         'Desporto': 100,
         'Ciência': 100
@@ -522,7 +522,7 @@ def busca():
 # Mapeamento de nomes de categorias para os seus IDs
 CATEGORIAS = {
     "Ciência": 1,
-    "Conhecimento Geral": 2,
+    "Conhecimento_geral": 2,
     "Desporto": 3,
     "Entretenimento": 4,
 }
