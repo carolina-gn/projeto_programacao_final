@@ -49,3 +49,10 @@
       color: #7b6299;               /* opcional: cor do texto */
       border-radius: 5px;
     }
+
+    .mb-3 {
+      background-color: #cde9f3; /* ou qualquer cor que preferires */
+      padding: 10px;             /* opcional: para dar espaço interno */
+      color: #7b6299;               /* opcional: cor do texto */
+      border-radius: 5px;
+    }
