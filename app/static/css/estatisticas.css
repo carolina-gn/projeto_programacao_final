@@ -48,6 +48,7 @@
       padding: 10px;             
       color: #7b6299;               
       border-radius: 5px;
+      font-weight: bold;
     }
 
     .mb-3 {
@@ -61,5 +62,9 @@
       background-color: #cde9f3; 
       border-radius: 10px;
       padding: 15px;
+      border: 3px solid #f9fbae;
+    }
+
+    #userProgressChart {
       border: 3px solid #f9fbae;
     }
