@@ -22,9 +22,12 @@
       <button><a href="{{ url_for('logout') }}"><span>👤 Logout</span></a></button>
 
       <div class="custom-dropdown">
-        <button class="btn btn-secondary" id="toggleCategorias"><span>📚 Categorias</span>
-        <span class="arrow">&#9662;</span>
-      </button>
+        <button class="btn btn-secondary" id="toggleCategorias">
+          <span class="icon">📚</span>
+          <span class="label">Categorias</span>
+          <span class="arrow">&#9662;</span>
+        </button>
+
         <ul class="dropdown-content" id="categoriasMenu">
           <li><a href="{{ url_for('Conhecimento_geral') }}">🌍 Conhecimento Geral</a></li>
           <li><a href="{{ url_for('Entretenimento') }}">🎬 Entretenimento</a></li>

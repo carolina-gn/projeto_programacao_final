@@ -129,6 +129,12 @@
       display: block;
     }
 
+    .sidebar.collapsed .custom-dropdown .label,
+    .sidebar.collapsed .custom-dropdown .dropdown-content,
+    .sidebar.collapsed .custom-dropdown .arrow {
+      display: none;
+    }
+
 
     .sidebar.collapsed button span,
     .sidebar.collapsed li span,
