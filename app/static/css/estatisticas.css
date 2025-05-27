@@ -68,6 +68,6 @@
       border: 3px solid #f9fbae;
     }
 
-    .progress {
-      background-color: #f0f0f0; /* ou qualquer outra cor que preferires */
+    .progress-bar {
+      background-color: #f0f0f0;
     }
