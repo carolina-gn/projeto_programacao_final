@@ -1,5 +1,5 @@
    body {
-      background: linear-gradient(135deg, #511281, #2b5876);
+      background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");
       color: white;
     }
     main {
