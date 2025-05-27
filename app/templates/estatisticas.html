@@ -6,23 +6,26 @@
 
   <div class="container mt-4">
     <h3 class="text-center">Progresso por Categoria</h3>
-    
-    {% for categoria in ['Conhecimento_geral', 'Entretenimento', 'Desporto', 'Ciência'] %}
-      <div class="mb-3">
-        <strong>{{ categoria }}</strong>
-        <div class="progress" style="height: 20px;">
-          <div class="progress-bar 
-                      {% if categoria == 'Conhecimento_geral' %}bg-success
-                      {% elif categoria == 'Entretenimento' %}bg-info
-                      {% elif categoria == 'Desporto' %}bg-warning text-dark
-                      {% elif categoria == 'Ciência' %}bg-danger
-                      {% endif %}"
-               style="width: {{ progresso.get(categoria, 0) }}%;">
-            {{ progresso.get(categoria, 0) }}%
+
+
+    <div class="progress-wrapper p-3">
+      {% for categoria in ['Conhecimento_geral', 'Entretenimento', 'Desporto', 'Ciência'] %}
+        <div class="mb-3">
+          <strong>{{ categoria }}</strong>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar 
+                        {% if categoria == 'Conhecimento_geral' %}bg-success
+                        {% elif categoria == 'Entretenimento' %}bg-info
+                        {% elif categoria == 'Desporto' %}bg-warning text-dark
+                        {% elif categoria == 'Ciência' %}bg-danger
+                        {% endif %}"
+                style="width: {{ progresso.get(categoria, 0) }}%;">
+              {{ progresso.get(categoria, 0) }}%
+            </div>
           </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
 
     <hr>
 
