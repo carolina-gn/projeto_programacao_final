@@ -11,7 +11,7 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-image: url("{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}");
+      background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");
       color: white;
     }
 
