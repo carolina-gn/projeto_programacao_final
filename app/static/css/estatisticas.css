@@ -33,6 +33,7 @@
       max-width: 700px;
       width: 100%;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border: 3px solid #f9fbae;
       
     }
  
@@ -55,4 +56,5 @@
       padding: 10px;             /* opcional: para dar espaço interno */
       color: #7b6299;               /* opcional: cor do texto */
       border-radius: 5px;
+      border: 3px solid #f9fbae;
     }
