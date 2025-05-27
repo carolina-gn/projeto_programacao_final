@@ -28,6 +28,23 @@ CREATE TABLE IF NOT EXISTS pontuacoes (
     pontuacao INT NOT NULL,
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    DELETE FROM pontuacoes WHERE pontuacao IS NULL;
+    
+    SELECT u.username, SUM(p.pontuacao) AS total_pontuacao
+    FROM pontuacoes p
+    JOIN users u ON p.user_id = u.id
+    WHERE p.pontuacao IS NOT NULL
+    GROUP BY u.username
+    ORDER BY total_pontuacao DESC;
+    IF categoria = 1 THEN
+        SELECT u.username, SUM(p.pontuacao) AS total_pontuacao
+        FROM pontuacoes p
+        JOIN users u ON p.user_id = u.id
+        WHERE p.categoria = 1 AND p.pontuacao IS NOT NULL
+        GROUP BY u.username
+        ORDER BY total_pontuacao DESC;
+    END IF;
+
 );
 
 

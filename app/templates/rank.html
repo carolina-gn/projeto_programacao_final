@@ -15,14 +15,14 @@
       </tr>
     </thead>
     <tbody>
-      {% for user in ranking %}
-      
-  <tr>
-    <td>{{ categoria }}</td>
-    <td>{{ user_id }}</td>
-    <td>{{ pontuacao }}</td>
-  </tr>
-{% endfor %}
+     {% for user in ranking %}
+      <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.total_pontuacao }}</td>
+
+      </tr>
+    {% endfor %}
 
     </tbody>
   </table>

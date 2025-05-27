@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>Quizzify</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-  <style>
+  <link rel="stylesheet" href="main.css">
+ <style>
     :root {
       --sidebar-width: 240px;
       --sidebar-width-collapsed: 65px;
@@ -19,14 +19,11 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      min-height: 100vh;
-      background-image: url("{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      color: white;
+      height: 100vh;
       display: flex;
       flex-direction: column;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
     }
 
     header {
@@ -43,7 +40,7 @@
       height: 50px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(114, 91, 183, 0.1);
-      background-color: #6a11cb;
+    background-color: #6a11cb;
     }
 
     .wrapper {
@@ -121,7 +118,7 @@
     }
 
     .box {
-      background: rgba(255, 255, 255, 0.9);
+      background: white;
       color: #333;
       border-radius: 12px;
       padding: 25px;
@@ -133,7 +130,7 @@
 <body>
 
   <header>
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Quizzify Logo">
+    <img src="Quizzify.jpg" alt="Quizzify Logo">
   </header>
 
   <div class="wrapper">
@@ -148,12 +145,11 @@
 
       <button style="margin-top: auto;"><a href="{{ url_for('logout') }}"><span>Sair</span></a></button>
     </nav>
-
+  
     <main>
-      {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
     </main>
   </div>
-
   <script>
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggleBtn');
