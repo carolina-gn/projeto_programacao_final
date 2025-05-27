@@ -188,7 +188,7 @@ def dashboard():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
-    return render_template('principal.html')
+    return render_template('principal_base.html')
 
 @app.route('/Conhecimento_geral')
 def Conhecimento_geral():
