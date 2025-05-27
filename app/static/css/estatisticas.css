@@ -33,7 +33,6 @@
       max-width: 700px;
       width: 100%;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      border: 3px solid #f9fbae;
       
     }
  
@@ -45,16 +44,20 @@
     }
 
     h3 {
-      background-color: #cde9f3; /* ou qualquer cor que preferires */
-      padding: 10px;             /* opcional: para dar espaço interno */
-      color: #7b6299;               /* opcional: cor do texto */
+      background-color: #cde9f3; 
+      padding: 10px;             
+      color: #7b6299;               
       border-radius: 5px;
     }
 
     .mb-3 {
-      background-color: #cde9f3; /* ou qualquer cor que preferires */
-      padding: 10px;             /* opcional: para dar espaço interno */
-      color: #7b6299;               /* opcional: cor do texto */
+      background-color: #cde9f3; 
+      padding: 10px;             
+      color: #7b6299;             
       border-radius: 5px;
       border: 3px solid #f9fbae;
+    }
+
+    .progress {
+      margin: 0px;
     }
