@@ -8,14 +8,24 @@
 </head>
 <body class="d-flex justify-content-center align-items-center min-vh-100">
 
- <div class="quiz-card">
-    <div class="question-title" id="question">Carregando pergunta...</div>
-    <div class="score" id="score">Pontuação: 0</div>
-    <div id="options" class="mb-3"></div>
-    <div class="nav-btns">
-      <button id="nextBtn" class="btn btn-light" style="display: none;">Próxima Pergunta</button>
-      <a href="{{ url_for('dashboard') }}" id="homeBtn" class="btn btn-success" style="display: none;">Início</a>
-    </div>
+  <div class="wrapper">
+    <main class="content">
+        <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
+
+        <section> 
+          <div class ="quiz-container">
+            <div class="quiz-card">
+              <div class="question-title" id="question">Carregando pergunta...</div>
+              <div class="score" id="score">Pontuação: 0</div>
+              <div id="options" class="mb-3"></div>
+              <div class="nav-btns">
+                <button id="nextBtn" class="btn btn-light" style="display: none;">Próxima Pergunta</button>
+                <a href="{{ url_for('dashboard') }}" id="homeBtn" class="btn btn-success" style="display: none;">Início</a>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
   </div>
 
         {% block content %}{% endblock %}

@@ -1,6 +1,12 @@
    
    body {
-      background-image: "{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}";
+      background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");
+    }
+
+    .quizz-container {
+      display: flex;
+      justify-content: center; 
+      align-items: center;    
     }
 
     .quiz-card {
@@ -11,6 +17,7 @@
       max-width: 700px;
       width: 100%;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border: 3px solid #f9fbae;
     }
 
     .question-title {
@@ -56,4 +63,18 @@
       justify-content: space-between;
       margin-top: 20px;
     }
- 
+    
+    .content {
+      flex: 1;
+      padding: 20px;
+      align-items: center
+    }
+
+    .box1 {
+      background: #cde9f3;
+      color: #333;
+      border-radius: 12px;
+      margin: 0 auto;
+      max-width: 400px;
+      font-size: 1.2rem;
+    }
