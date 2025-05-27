@@ -19,19 +19,20 @@
 
       <img src="{{ url_for('static', filename='images/ponto_de_interrogação_logo.png') }}" alt="ponto de interrogação">
 
-      <button><a href="{{ url_for('login') }}"><span>👤 Login</span></a></button>
+      <button><a href="{{ url_for('logout') }}"><span>👤 Logout</span></a></button>
 
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <span>📚 Categorias</span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{{ url_for('Conhecimento_geral') }}"><span>🌍 Conhecimento Geral</span></a></li>
-          <li><a class="dropdown-item" href="{{ url_for('Entretenimento') }}"><span>🎬 Entretenimento</span></a></li>
-          <li><a class="dropdown-item" href="{{ url_for('Desporto') }}"><span>⚽ Desporto</span></a></li> 
-          <li><a class="dropdown-item" href="{{ url_for('Ciência') }}"><span>🔬 Ciência</span></a></li>
+      <div class="custom-dropdown">
+        <button class="btn btn-secondary" id="toggleCategorias"><span>📚 Categorias</span>
+        <span class="arrow">&#9662;</span>
+      </button>
+        <ul class="dropdown-content" id="categoriasMenu">
+          <li><a href="{{ url_for('Conhecimento_geral') }}">🌍 Conhecimento Geral</a></li>
+          <li><a href="{{ url_for('Entretenimento') }}">🎬 Entretenimento</a></li>
+          <li><a href="{{ url_for('Desporto') }}">⚽ Desporto</a></li>
+          <li><a href="{{ url_for('Ciência') }}">🔬 Ciência</a></li>
         </ul>
       </div>
+
 
       <button><a href="{{ url_for('ranking') }}"><span>🏆 Rank</span></a></button>
 
@@ -46,14 +47,15 @@
   </div>
 
 
-  <script>
-    const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('toggleBtn');
+<script>
+  const toggleCategorias = document.getElementById('toggleCategorias');
+  const dropdownWrapper = document.querySelector('.custom-dropdown');
 
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-    });
-  </script>
+  toggleCategorias.addEventListener('click', () => {
+    dropdownWrapper.classList.toggle('active');
+  });
+</script>
+
 
 </body>
 </html>

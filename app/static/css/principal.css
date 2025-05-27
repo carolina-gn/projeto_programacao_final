@@ -25,6 +25,26 @@
       border-bottom: 1px solid #ccc;
     }
 
+    .custom-dropdown .dropdown-content {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .custom-dropdown.active .dropdown-content {
+      display: flex;
+    }
+
+    .custom-dropdown .arrow {
+      margin-left: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .custom-dropdown.active .arrow {
+      transform: rotate(180deg); /* seta aponta para cima */
+    }
+
     header h1 {
       color: #957eb7;
             font-family: 'Arial Black', sans-serif; 
