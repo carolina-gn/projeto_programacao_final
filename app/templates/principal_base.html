@@ -108,7 +108,18 @@
         </div>
       </section>
       <section class="box">
-        <h2>Rank atual</h2>
+            <h2>Pódio dos Melhores Jogadores 🏅</h2>
+            {% if top_jogadores %}
+              <ol class="podium">
+                {% for user in top_jogadores %}
+                  <li>
+                    🥇 {{ user.username }} — {{ user.total_pontuacao }} pts
+                  </li>
+                {% endfor %}
+              </ol>
+            {% else %}
+              <p>Nenhum jogador no ranking ainda.</p>
+            {% endif %}
         <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_com_taça_logo.png') }}" alt="">
       </section>   
     </main>
