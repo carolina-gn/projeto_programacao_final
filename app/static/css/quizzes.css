@@ -40,12 +40,12 @@
     }
 
     .btn-red { background-color: #e74c3c; }
-    .btn-blue { background-color: #3498db; }
+    .btn-purple { background-color: #7b6299; }
     .btn-green { background-color: #2ecc71; }
     .btn-yellow { background-color: #f1c40f; color: #222; }
 
     .correct {
-      background-color: #2ecc71 !important;
+      background-color: #7beab8 !important;
     }
 
     .wrong {
@@ -77,4 +77,10 @@
       margin: 0 auto;
       max-width: 400px;
       font-size: 1.2rem;
+    }
+
+    #homeBtn {
+      background-color: #7beab8; /* Verde exemplo */
+      color: white;
+      border: none;
     }

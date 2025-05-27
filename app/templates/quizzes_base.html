@@ -10,7 +10,7 @@
 
   <div class="wrapper">
     <main class="content">
-        <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
+        <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="200"></section>
 
         <section> 
           <div class ="quiz-container">
@@ -32,7 +32,7 @@
   
     <script>
 
-    const colors = [ "btn-blue"];
+    const colors = [ "btn-purple"];
     let perguntaAtual = 0;
     let pontuacao = 0;
 
@@ -104,7 +104,7 @@
       questionEl.textContent = `🏁 Terminaste o quiz! Pontuação final: ${pontuacao}/${perguntas.length}`;
       optionsEl.innerHTML = "";
       nextBtn.style.display = "none";
-      homeBtn.style.display = "inline-block";
+      homeBtn.style.display = "inline-block"; 
       atualizarPontuacao();
     
       savepontuacao(pontuacao,categoria); // Enviar pontuação para a base de dados
