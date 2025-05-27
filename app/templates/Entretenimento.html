@@ -1,0 +1,34 @@
+{% extends "quizzes_base.html" %}
+{% block content %}
+  <script>
+    const categoria = 4; // Categoria de Entretenimento
+    const perguntas = [
+      {
+        pergunta: "Qual é o nome da série onde aparece o personagem 'Walter White'?",
+        opcoes: ["Breaking Bad", "Stranger Things", "The Office", "Better Call Saul"],
+        correta: "Breaking Bad"
+      },
+      {
+        pergunta: "Qual filme ganhou o Óscar de Melhor Filme em 1998?",
+        opcoes: ["Titanic", "O Resgate do Soldado Ryan", "Shakespeare in Love", "Matrix"],
+        correta: "Shakespeare in Love"
+      },
+      {
+        pergunta: "Quem é o criador do universo Marvel nos quadrinhos?",
+        opcoes: ["Stan Lee", "Walt Disney", "George Lucas", "James Gunn"],
+        correta: "Stan Lee"
+      },
+      {
+        pergunta: "Qual o nome do hobbit que carrega o anel em 'O Senhor dos Anéis'?",
+        opcoes: ["Bilbo", "Frodo", "Sam", "Pippin"],
+        correta: "Frodo"
+      },
+      {
+        pergunta: "Qual é o super-herói que usa um escudo com uma estrela?",
+        opcoes: ["Homem de Ferro", "Thor", "Capitão América", "Batman"],
+        correta: "Capitão América"
+      }
+    ];
+    </script>
+
+  {% endblock %}

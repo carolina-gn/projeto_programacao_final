@@ -1,0 +1,34 @@
+{% extends "quizzes_base.html" %}
+{% block content %}
+  <script>
+    const categoria = 3; // Categoria de Desporto
+    const perguntas = [
+      {
+        pergunta: "Quantos jogadores tem uma equipa de futebol em campo?",
+        opcoes: ["9", "10", "11", "12"],
+        correta: "11"
+      },
+      {
+        pergunta: "Qual país sediou os Jogos Olímpicos de 2016?",
+        opcoes: ["China", "Brasil", "Reino Unido", "Japão"],
+        correta: "Brasil"
+      },
+      {
+        pergunta: "Qual é o maior torneio de clubes de futebol da Europa?",
+        opcoes: ["Premier League", "La Liga", "Champions League", "Serie A"],
+        correta: "Champions League"
+      },
+      {
+        pergunta: "Quantos sets são necessários para vencer um jogo de ténis masculino em Grand Slams?",
+        opcoes: ["2", "3", "4", "5"],
+        correta: "3"
+      },
+      {
+        pergunta: "Quem é conhecido como 'O Rei' do futebol?",
+        opcoes: ["Cristiano Ronaldo", "Pelé", "Messi", "Maradona"],
+        correta: "Pelé"
+      }
+    ];
+    </script>
+
+  {% endblock %}

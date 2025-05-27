@@ -1,0 +1,44 @@
+
+   body {
+      background: linear-gradient(135deg, #511281, #2b5876);
+      color: white;
+    }
+    main {
+      flex: 1;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+     header {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #333;
+      border-bottom: 1px solid #ccc;
+    }
+    header img {
+      height: 50px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(114, 91, 183, 0.1);
+    background-color: #6a11cb;
+    }
+    .card-body {
+      background-color: white;
+      color: black;
+      border-radius: 16px;
+      padding: 60px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      
+    }
+ 
+    canvas {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

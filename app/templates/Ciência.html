@@ -1,0 +1,33 @@
+{% extends "quizzes_base.html" %}
+{% block content %}
+  <script>
+    const categoria = 1; // Categoria de Ciência
+    const perguntas = [
+      {
+        pergunta: "Qual é o elemento químico com símbolo 'O'?",
+        opcoes: ["Ouro", "Oxigênio", "Osmium", "Óxido"],
+        correta: "Oxigênio"
+      },
+      {
+        pergunta: "Qual planeta é conhecido como o Planeta Vermelho?",
+        opcoes: ["Júpiter", "Vênus", "Marte", "Saturno"],
+        correta: "Marte"
+      },
+      {
+        pergunta: "Qual é a unidade básica da vida?",
+        opcoes: ["Átomo", "Célula", "Molécula", "Tecido"],
+        correta: "Célula"
+      },
+      {
+        pergunta: "Quem desenvolveu a teoria da relatividade?",
+        opcoes: ["Newton", "Einstein", "Galileu", "Tesla"],
+        correta: "Einstein"
+      },
+      {
+        pergunta: "A água é composta por quais elementos?",
+        opcoes: ["Hidrogênio e Oxigênio", "Carbono e Oxigênio", "Hidrogênio e Nitrogênio", "Hélio e Oxigênio"],
+        correta: "Hidrogênio e Oxigênio"
+      }
+    ];
+    </script>
+  {% endblock %}
