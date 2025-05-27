@@ -37,16 +37,16 @@
     }
 
     function savepontuacao(pontuacao, categoria) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "/save_score", true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); 
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log("Pontuação salva com sucesso!");
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/save_score", true);
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); 
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log("Pontuação salva com sucesso!");
+        }
+      }; 
+      xhr.send(JSON.stringify({ pontuacao: pontuacao, categoria: categoria }));
     }
-  }; 
-  xhr.send(JSON.stringify({ pontuacao: pontuacao, categoria: categoria }));
-}
 
 
 
