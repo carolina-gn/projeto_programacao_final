@@ -11,10 +11,7 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      background-image: url("{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}");
       color: white;
     }
 
@@ -28,17 +25,24 @@
       border-bottom: 1px solid #ccc;
     }
 
-    header img {
-      height: 50px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(114, 91, 183, 0.1);
-    background-color: #6a11cb;
+    header h1 {
+      color: #957eb7;
+            font-family: 'Arial Black', sans-serif; 
+            font-size: 2rem;
+            text-align: center; 
+    }
+
+    h2 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.8rem;
+      color: #7b6299;
+      font-weight: 700;
     }
 
     .wrapper {
-      flex: 1;
       display: flex;
-      height: calc(100% - 60px);
+      align-items: stretch;
+      min-height: 100vh;
     }
 
     .sidebar {
@@ -80,6 +84,16 @@
       transition: background 0.2s;
     }
 
+    .sidebar .dropdown-menu {
+      background-color: #2c2f4a; 
+      width: 220px; 
+      padding: 10px 0px 0px 0px;
+      margin: 0;
+      border: none;
+      box-shadow: none;
+      position: static;
+    }
+
     .sidebar button:hover,
     .sidebar li:hover {
       background: #5a5ea0;
@@ -95,6 +109,7 @@
       display: block;
     }
 
+
     .sidebar.collapsed button span,
     .sidebar.collapsed li span,
     .sidebar.collapsed strong span {
@@ -109,11 +124,123 @@
       gap: 20px;
     }
 
+    .content {
+      flex: 1;
+      padding: 20px;
+    }   
+
     .box {
-      background: white;
+      background: rgba(255, 255, 255, 0.7);
       color: #333;
+      border: 3px solid #f9fbae;
       border-radius: 12px;
       padding: 25px;
       font-size: 1.2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;   /* vertical */
+      justify-content: center; /* horizontal */
+      text-align: center;
+      flex-direction: column;
+      width: 80%;
+      align-self: center;
+    }
+
+    .box1 {
+      background: #cde9f3;
+      color: #333;
+      border-radius: 12px;
+      margin: 0 auto;
+      max-width: 400px;
+      font-size: 1.2rem;
+    }
+
+    .carousel-item {
+      height: 300px
+    }
+
+    .carousel-item img {
+      height: 300px;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .carousel-inner {
+      position: relative;
+      min-height: 150px; /* altura fixa mínima para o espaço das captions */
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 400px;           /* largura fixa relativa (ajuste conforme desejar) */
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 15px;
+      box-sizing: border-box;
+      text-align: center;
+      font-size: 0.9rem;
+      color: white;
+      white-space: normal;  /* para quebra automática do texto */
+      transition: none !important;
+    }
+    
+    .carousel-caption h5 {
+      font-size: 1rem; /* título menor */
+    }
+
+    .carousel-caption p {
+      font-size: 0.85rem; /* parágrafo menor */
+    }
+
+    .img-logo {
+      min-width: 100px;
+      height: 100px;
+    }
+
+    .lista-perguntas {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-top: 20px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .item {
+      background-color: white;
+      border-left: 5px solid #7beab8;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+    }
+
+    .categoria {
+      font-size: 0.9rem;
+      color: #2c2f4a;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .pergunta {
+      font-weight: bold;
+      color: #7b6299;
+      margin: 8px 0;
+    }
+
+    .opções {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .opções li {
+      margin-bottom: 6px;
+      color: #333;
     }
