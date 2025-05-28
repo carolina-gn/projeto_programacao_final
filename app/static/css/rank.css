@@ -80,3 +80,59 @@ button
      li:hover {
       background: #5a5ea0;
     }
+
+    h3 {
+      background-color: #cde9f3; 
+      padding: 10px;             
+      color: #7b6299;               
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .ranking-title {
+  color: #7b6299;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.ranking-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.ranking-table thead {
+  background-color: #7b6299;
+  color: white;
+}
+
+.ranking-table th,
+.ranking-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ranking-table tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+.ranking-table tr:hover {
+  background-color: #e0d4f1;
+  transition: background-color 0.3s;
+}
+
+.ranking-table td:first-child {
+  font-weight: bold;
+  color: #7beab8;
+  font-size: 1.1rem;
+}
