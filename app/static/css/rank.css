@@ -81,7 +81,7 @@ button
       background: #5a5ea0;
     }
 
-    h3 {
+    h2 {
       background-color: #cde9f3; 
       padding: 10px;             
       color: #7b6299;               
@@ -102,6 +102,7 @@ button
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
+  border: 3px solid #f9fbae;
 }
 
 .ranking-table {
@@ -119,7 +120,7 @@ button
 .ranking-table th,
 .ranking-table td {
   padding: 12px 18px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #000000;
 }
 
 .ranking-table tr:nth-child(even) {
@@ -133,6 +134,6 @@ button
 
 .ranking-table td:first-child {
   font-weight: bold;
-  color: #7beab8;
+  color: #7b6299;
   font-size: 1.1rem;
 }
