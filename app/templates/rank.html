@@ -5,30 +5,27 @@
 
 
 <div class="container mt-5">
-  <h3 class="text-center">Ranking Geral</h3>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Utilizador</th>
-        <th>Total de Pontuação</th>
-      </tr>
-    </thead>
-    <tbody>
-     {% for user in ranking %}
-      <tr>
+  <h2 class="ranking-title text-center">Ranking Geral</h2>
+  <div class="ranking-wrapper">
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th>Lugar</th>
+          <th>Nome</th>
+          <th>Pontuação</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in ranking %}
+        <tr>
           <td>{{ loop.index }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.total_pontuacao }}</td>
-
-      </tr>
-    {% endfor %}
-
-    </tbody>
-  </table>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
-
-</div>
-
 
 {% endblock %}
