@@ -281,7 +281,7 @@
 .marquee-track {
   display: inline-block;
   white-space: nowrap;
-  animation: scroll-loop 9s linear infinite;
+  animation: scroll-loop 10s linear infinite;
 }
 
 .marquee-track span {
@@ -294,7 +294,7 @@
 
 @keyframes scroll-loop {
   0% {
-    transform: translateX(105%);
+    transform: translateX(110%);
   }
   100% {
     transform: translateX(-100%);
