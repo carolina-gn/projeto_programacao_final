@@ -149,6 +149,6 @@ button
   color: #333;
   border-radius: 12px;
   margin: 0 auto;
-  max-width: 400px;
+  min-width: 200px;
   font-size: 1.2rem;
 }
