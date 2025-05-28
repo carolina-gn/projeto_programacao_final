@@ -242,7 +242,7 @@ def definicoes_base():
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
     return render_template('definicoes_base.html')
-
+ 
 @app.route('/rank_estatisticas')
 def ranke_estatisticas():
     if 'user_id' not in session:
@@ -318,6 +318,65 @@ def estatisticas():
         row['data'] = row['data'].strftime('%d/%m/%Y')
 
     return render_template('estatisticas.html', progresso=progresso, historico=historico)
+
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+def edit_profile():
+    # Verifica se o utilizador está logado
+    if 'user_id' not in session:
+        flash('Por favor, faça login primeiro!', 'warning')
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        email = request.form.get('email')
+
+        # Processar upload da foto
+        photo_filename = None
+        if 'photo' in request.files:
+            file = request.files['photo']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                photo_filename = f"user_{user_id}_{filename}"
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], photo_filename))
+
+        # Construir query de atualização
+        update_query = "UPDATE users SET username = %s, password = %s, email = %s"
+        params = [username, password, email]
+
+        if photo_filename:
+            update_query += ", photo = %s"
+            params.append(photo_filename)
+
+        update_query += " WHERE id = %s"
+        params.append(user_id)
+
+        try:
+            cursor.execute(update_query, tuple(params))
+            db.commit()
+            flash('Perfil atualizado com sucesso!', 'success')
+            return redirect(url_for('edit_profile'))
+        except Exception as e:
+            db.rollback()
+            flash('Erro ao atualizar perfil.', 'danger')
+            app.logger.error(f"Erro ao atualizar perfil: {e}")
+
+    # Método GET — carregar dados atuais do utilizador
+    cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+    user = cursor.fetchone()
+    cursor.close()
+
+    if not user:
+        flash('Utilizador não encontrado.', 'danger')
+        return redirect(url_for('dashboard'))
+
+    return render_template('edit_profile.html', user=user)
 
 @app.route('/user')
 def show_user():
