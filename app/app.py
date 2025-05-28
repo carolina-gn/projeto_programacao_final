@@ -188,18 +188,18 @@ def dashboard():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
-    db = get_db()  # Conecta ao banco de dados e dos ranks atribui um limite de utilizadores a aparecer na lista de rankiadas (PÓDIO)
-    cursor = db.cursor(dictionary=True)
-    cursor.execute("""
-        SELECT u.username, SUM(p.pontuacao) AS total_pontuacao
-        FROM pontuacoes p
-        JOIN users u ON p.user_id = u.id
-        GROUP BY u.username
-        ORDER BY total_pontuacao DESC
-        LIMIT 3
-    """)
-    top_jogadores = cursor.fetchall()
-    return render_template("principal_base.html", top_jogadores=top_jogadores)
+    #db = get_db()  # Conecta ao banco de dados e dos ranks atribui um limite de utilizadores a aparecer na lista de rankiadas (PÓDIO)
+   # cursor = db.cursor(dictionary=True)
+   # cursor.execute("""
+    #    SELECT u.username, SUM(p.pontuacao) AS total_pontuacao
+   #     FROM pontuacoes p
+   #     JOIN users u ON p.user_id = u.id
+    #    GROUP BY u.username
+   #     ORDER BY total_pontuacao DESC
+    #    LIMIT 3
+   # """)
+    #top_jogadores = cursor.fetchall()
+    return render_template("principal_base.html") #top_jogadores=top_jogadores
 
 @app.route('/Conhecimento_geral')
 def Conhecimento_geral():
