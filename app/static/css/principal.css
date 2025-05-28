@@ -199,20 +199,19 @@
     }
 
     .carousel-caption {
-      position: absolute;
       bottom: 10px;
-      left: 50%;
+      left: 50% !important;        /* Força o centro */
+      right: auto !important;      /* Anula o Bootstrap */
       transform: translateX(-50%);
       width: 80%;
-      max-width: 400px;           /* largura fixa relativa (ajuste conforme desejar) */
+      max-width: 400px;
       background: rgba(0, 0, 0, 0.5);
       padding: 10px 15px;
       box-sizing: border-box;
       text-align: center;
       font-size: 0.9rem;
       color: white;
-      white-space: normal;  /* para quebra automática do texto */
-      transition: none !important;
+      white-space: normal;
     }
     
     .carousel-caption h5 {
