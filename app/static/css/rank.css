@@ -117,10 +117,16 @@ button
   color: white;
 }
 
-.ranking-table th,
+.ranking-table th {
+  padding: 12px 18px;
+  border-bottom: 1px solid #ffffff;
+
+}
+
 .ranking-table td {
   padding: 12px 18px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #ffffff;
+  color: #000000;
 }
 
 .ranking-table tr:nth-child(even) {
@@ -136,4 +142,13 @@ button
   font-weight: bold;
   color: #7b6299;
   font-size: 1.1rem;
+}
+
+.box1 {
+  background: #cde9f3;
+  color: #333;
+  border-radius: 12px;
+  margin: 0 auto;
+  min-width: 300px;
+  font-size: 1.2rem;
 }
