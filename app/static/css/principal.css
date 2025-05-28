@@ -269,3 +269,34 @@
       margin-bottom: 6px;
       color: #333;
     }
+
+    .marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+  height: 2.5rem;
+}
+
+.marquee-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-loop 9s linear infinite;
+}
+
+.marquee-track span {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #7b6299;
+  padding-right: 4rem; /* espaço entre repetições */
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(105%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
