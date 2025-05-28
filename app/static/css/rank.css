@@ -117,7 +117,12 @@ button
   color: white;
 }
 
-.ranking-table th,
+.ranking-table th {
+  padding: 12px 18px;
+  border-bottom: 1px solid #ffffff;
+  
+}
+
 .ranking-table td {
   padding: 12px 18px;
   border-bottom: 1px solid #ffffff;
