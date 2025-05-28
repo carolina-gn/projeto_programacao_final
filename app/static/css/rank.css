@@ -120,7 +120,8 @@ button
 .ranking-table th,
 .ranking-table td {
   padding: 12px 18px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #ffffff;
+  color: #000000;
 }
 
 .ranking-table tr:nth-child(even) {
