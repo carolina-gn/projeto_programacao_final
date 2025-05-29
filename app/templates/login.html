@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+    <!-- METADADOS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Login - Quizzify</title>
+
+    <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- LINK PARA A PAGINA DE CSS CRIADA PARA ESTELIZAR A PAGINA DE LOGIN -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
+    <!-- CONTAINER PRINCIPAL DO LOGIN -->
     <div class="login-container">
 
         <!-- CARTÃO DE LOGIN -->
         <div class="login-card">
             <h3>Iniciar Sessão</h3>
 
+            <!-- MENSAGENS FLASH (ex: erro de login) -->
             {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="alert">
@@ -22,21 +30,26 @@
             {% endif %}
             {% endwith %}
 
+            <!-- FORMULÁRIO DE LOGIN -->
             <form method="POST" action="{{ url_for('login') }}">
+
+                <!-- CAMPO: NOME DE UTILIZADOR -->
                 <div class="mb-3 text-start">
                     <label for="username" class="form-label">Utilizador</label>
                     <input type="text" class="form-control" name="username" id="username" placeholder="Nome de utilizador" required>
                 </div>
 
+                <!-- CAMPO: PALAVRA-PASSE -->
                 <div class="mb-3 text-start">
                     <label for="password" class="form-label">Palavra-passe</label>
                     <input type="password" class="form-control" name="password" id="password" placeholder="Palavra-passe" required>
                 </div>
 
+                <!-- BOTÃO: ENTRAR -->
                 <button type="submit" class="btn btn-login w-100">Entrar</button>
             </form>
 
-            <!-- BOTÃO DE CRIAR CONTA -->
+            <!-- BOTÃO: CRIAR NOVA CONTA -->
             <a href="{{ url_for('register') }}" class="btn btn-register w-100">Criar nova conta</a>
         </div>
     </div>
