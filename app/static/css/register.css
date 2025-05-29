@@ -1,68 +1,78 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");
-  background-size: cover;
-  background-position: center;
-  color: #333;
+  font-family: 'Segoe UI', sans-serif;  
+  background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");  /* Imagem de fundo */
+  background-size: cover;               
+  background-position: center;          
+  color: #333;                          
 }
 
+/* CARTÃO CENTRAL DE REGISTO */
 .card {
-  background: rgba(255, 255, 255, 0.5);
-  border: 3px solid #f9fbae;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5);  
+  border: 3px solid #f9fbae;           
+  border-radius: 15px;                  
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  
 }
 
+/* CABEÇALHO DO CARTÃO */
 .card-header {
-  background-color: #7b6299 !important; /* roxo suave */
-  color: white;
-  font-weight: bold;
-  font-size: 1.3rem;
-  text-align: center;
-  border-top-left-radius: 12px;
+  background-color: #7b6299 !important;  
+  color: white;                          
+  font-weight: bold;                    
+  font-size: 1.3rem;                    
+  text-align: center;                  
+  border-top-left-radius: 12px;          
   border-top-right-radius: 12px;
-  padding: 15px;
+  padding: 15px;                      
 }
 
+/* CORPO DO CARTÃO */
 .card-body {
-  padding: 30px;
+  padding: 30px;                         
 }
 
+/* RÓTULOS DOS CAMPOS DO FORMULÁRIO */
 .form-label {
-  font-weight: 600;
-  color: #2c2f4a;
+  font-weight: 600;                      
+  color: #2c2f4a;                        
 }
 
+/* CAMPOS DE INPUT */
 .form-control {
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  font-size: 1rem;
+  border-radius: 8px;                    
+  border: 1px solid #ccc;                
+  padding: 10px;                         
+  font-size: 1rem;                       
 }
 
+/* EFEITO QUANDO O INPUT ESTÁ ATIVO (FOCUS) */
 .form-control:focus {
-  border-color: #7b6299;
-  box-shadow: 0 0 0 0.2rem rgba(123, 98, 153, 0.25);
+  border-color: #7b6299;                 
+  box-shadow: 0 0 0 0.2rem rgba(123, 98, 153, 0.25);  
 }
 
+/* BOTÃO DE REGISTO */
 .btn-success {
-  background-color: #7beab8;
-  border: none;
-  color: #2c2f4a;
-  font-weight: bold;
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
+  background-color: #7beab8;             
+  border: none;                       
+  color: #2c2f4a;                    
+  font-weight: bold;                    
+  border-radius: 10px;                  
+  transition: background-color 0.3s ease; 
 }
 
+/* EFEITO HOVER DO BOTÃO DE REGISTO */
 .btn-success:hover {
-  background-color: #63d3a3;
-  color: #1e1e2f;
+  background-color: #63d3a3;             
+  color: #1e1e2f;                        
 }
+
+/* BARRA COM O LOGÓTIPO */
 .box1 {
-  background: #cde9f3;
-  color: #333;
-  border-radius: 12px;
-  margin: 0 auto;
-  min-width: 300px;
-  font-size: 1.2rem;
+  background: #cde9f3;                   
+  color: #333;                           
+  border-radius: 12px;                   
+  margin: 0 auto;                        
+  min-width: 300px;                      
+  font-size: 1.2rem;                     
 }
