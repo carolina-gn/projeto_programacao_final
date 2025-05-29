@@ -82,7 +82,7 @@ def login():
                 session['user_id'] = user['id']
                 session['username'] = user['username']
                 flash('Login bem-sucedido!', 'success')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('principal'))
             else:
                 flash('Credenciais inválidas!', 'warning')
 
@@ -183,8 +183,8 @@ def home():
     return render_template('login.html')
 
 
-@app.route('/dashboard')
-def dashboard():
+@app.route('/principal')
+def principal():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
         return redirect(url_for('login'))
@@ -199,7 +199,7 @@ def dashboard():
         LIMIT 3
     """)
     top_jogadores = cursor.fetchall()
-    return render_template("principal_base.html", top_jogadores=top_jogadores)
+    return render_template("principal.html", top_jogadores=top_jogadores)
 
 @app.route('/Conhecimento_geral')
 def Conhecimento_geral():
@@ -379,7 +379,7 @@ def edit_profile():
 
     if not user:
         flash('Utilizador não encontrado.', 'danger')
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('principal'))
 
     return render_template('edit_profile.html', user=user)
 

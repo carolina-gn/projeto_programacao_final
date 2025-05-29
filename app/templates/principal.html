@@ -1,81 +1,126 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="UTF-8" />
-  <title>Quizzify</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/principal.css') }}">
-</head>
-<body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+{% extends "principal_base.html" %}
+{% block content %}
+<main class="content">
+      <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
+      <section class="box">
+       
+        <h2>Perguntas tipo</h2>
+        
+        <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_logo.png') }}" alt="">
+       
+        <div class="lista-perguntas">
 
-  <header>
-    <div class="marquee-container">
-  <div class="marquee-track">
-    <span>Bem vindo ao QUIZZIFY, o melhor site de quizzes do mundo! Aqui, o desafio é o seu melhor amigo. Pronto para começar?</span>
-  </div>
-</div>
-  </header>
+          <div class="item">
+            <p class="categoria">🌍 Conhecimento Geral</p>
+            <p class="pergunta">Qual é o país com maior população do mundo?</p>
+            <ul class="opções">
+              <li>China</li>
+              <li>Índia</li>
+              <li>EUA</li>
+              <li>Indonésia</li>
+            </ul>
+          </div>
 
-  
-  <div class="wrapper">
-    <nav class="sidebar" id="sidebar">
-      <button class="toggle-btn" id="toggleBtn">☰</button>
+          <div class="item">
+            <p class="categoria">🎬 Entretenimento</p>
+            <p class="pergunta">Quem interpretou o personagem Jack em "Titanic"?</p>
+            <ul class="opções">
+              <li>Leonardo DiCaprio</li>
+              <li>Brad Pitt</li>
+              <li>Tom Hanks</li>
+              <li>Johnny Depp</li>
+            </ul>
+          </div>
 
-      <img src="{{ url_for('static', filename='images/ponto_de_interrogação_logo.png') }}" alt="ponto de interrogação">
+          <div class="item">
+            <p class="categoria">⚽ Desporto</p>
+            <p class="pergunta">Quantos jogadores uma equipa de futebol tem em campo?</p>
+            <ul class="opções">
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
 
-      <button><a href="{{ url_for('logout') }}"><span>👤 Logout</span></a></button>
+          <div class="item">
+            <p class="categoria">🔬 Ciência</p>
+            <p class="pergunta">Qual é o elemento químico representado por "O"?</p>
+            <ul class="opções">
+              <li>Ouro</li>
+              <li>Oxigénio</li>
+              <li>Osso</li>
+              <li>Ozono</li>
+            </ul>
+          </div>
 
-      <div class="custom-dropdown">
-        <button class="btn btn-secondary" id="toggleCategorias">
-          <span class="icon">📚</span>
-          <span class="label">Categorias</span>
-          <span class="arrow">&#9662;</span>
-        </button>
+        </div>
 
-        <ul class="dropdown-content" id="categoriasMenu">
-          <li><a href="{{ url_for('Conhecimento_geral') }}">🌍 Conhecimento Geral</a></li>
-          <li><a href="{{ url_for('Entretenimento') }}">🎬 Entretenimento</a></li>
-          <li><a href="{{ url_for('Desporto') }}">⚽ Desporto</a></li>
-          <li><a href="{{ url_for('Ciência') }}">🔬 Ciência</a></li>
-        </ul>
-      </div>
+      </section>
+      <section class="box">
+        <h2>Fun Fact</h2>
 
-
-      <button><a href="{{ url_for('ranking') }}"><span>🏆 Rank</span></a></button>
-
-      <button><a href="{{ url_for('estatisticas') }}"><span>📊 Estatísticas</span></a></button>
-      
-      <button><a href="{{ url_for('definicoes') }}" style="margin-top: auto;"><span>⚙ Definições</span></a></button>
-    </nav>
-    <div class="content">
-      {% block content %}
-      <!-- Content will be injected here -->
-      {% endblock %}
-    </div>
-  
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.getElementById('toggleBtn');
-    const sidebar = document.getElementById('sidebar');
-
-    toggleBtn.addEventListener('click', function () {
-      sidebar.classList.toggle('collapsed');
-    });
-  });
-</script>
-
-<script>
-  const toggleCategorias = document.getElementById('toggleCategorias');
-  const dropdownWrapper = document.querySelector('.custom-dropdown');
-
-  toggleCategorias.addEventListener('click', () => {
-    dropdownWrapper.classList.toggle('active');
-  });
-</script>
-
-
-</body>
-</html>
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://c.files.bbci.co.uk/11F73/production/_120878537_4cfca0d7-2b27-474f-93b7-4c31269c5cdf.jpg" class="d-block w-100" alt="polvo">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Sabias que...</h5>
+                <p>Os polvos têm 3 corações</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://vamuver.com/wp-content/uploads/2024/07/Torre-Eiffel-Paris.png" class="d-block w-100" alt="Torre Eiffel">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Sabias que...</h5>
+                <p>A Torre Eiffel pode crescer até 15 cm no verão </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://preview.redd.it/sea-otters-hold-hands-so-they-dont-float-away-while-sleeping-v0-qu54fe6hx1mb1.jpg?width=1080&crop=smart&auto=webp&s=97fa7ddc6fe8a8cacb5a4e7743100f72e8a22cf3" class="d-block w-100" alt="lontras a dar as mãos enquanto dormem">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Sabias que...</h5>
+                <p>As lontras dão as mãos para dormir na água</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://img.europapress.es/fotoweb/fotonoticia_20210528130214_690.jpg" class="d-block w-100" alt="Espaço">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Sabias que...</h5>
+                <p>O espaço tem cheiro de metal queimado?</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+      <section class="box">
+            <h2>Pódio</h2>
+            {% if top_jogadores %}
+              <ol class="podium">
+                {% for user in top_jogadores %}
+                  <li>
+                    🥇 {{ user.username }} — {{ user.total_pontuacao }} pts
+                  </li>
+                {% endfor %}
+              </ol>
+            {% else %}
+              <p>Nenhum jogador no ranking ainda.</p>
+            {% endif %}
+        <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_com_taça_logo.png') }}" alt="">
+      </section>   
+    </main>
+ {% endblock %}
