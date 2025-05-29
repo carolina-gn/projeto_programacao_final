@@ -1,8 +1,18 @@
 {% extends "quizzes_base.html" %}
 {% block content %}
   <script>
-    const categoria = 1; // Categoria de Ciência
-    const perguntas = [
+    const categoria = 1; // Categoria de Ciência — usada para associar as respostas com a categoria no banco de dados
+    const perguntas = [  // Array de perguntas e respostas
+      {
+        pergunta: "Qual é a fórmula química da água?",
+        opcoes: ["H2O", "CO2", "O2", "H2"],
+        correta: "H2O" // Resposta correta — usada para validação de resposta do jogador
+      },
+      {
+        pergunta: "Qual é o planeta mais próximo do Sol?",
+        opcoes: ["Terra", "Marte", "Mercúrio", "Vênus"],
+        correta: "Mercúrio"
+      },
       {
         pergunta: "Qual é o elemento químico com símbolo 'O'?",
         opcoes: ["Ouro", "Oxigênio", "Osmium", "Óxido"],

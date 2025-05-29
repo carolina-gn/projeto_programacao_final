@@ -7,7 +7,7 @@ from mysql.connector import IntegrityError
 
 app = Flask(__name__)
 
-
+# Chave secreta usada para sessões
 app.secret_key = '24e23c43d423c434343vfghfgd'
 
 
@@ -18,13 +18,13 @@ app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD', 'quizzify_pass')
 app.config['MYSQL_DATABASE'] = os.getenv('DB_NAME', 'quizzify_db')
 
 
-# Configurações do upload
+# Configurações do upload de imagens
 UPLOAD_FOLDER = 'static/images/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
 
-
+# Função auxiliar para validar tipos de ficheiros permitidos
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -47,7 +47,7 @@ def get_db():
     return g.db
 
 
-# encerra a conexão com uso do decorador
+# encerra a conexão com uso do decorador (reutilizável por rota)
 @app.teardown_appcontext
 def close_db(error):
     db = g.pop('db', None)
@@ -58,17 +58,20 @@ def close_db(error):
         except mysql.connector.Error as err:
             app.logger.error(f"Erro ao fechar conexão: {err}")
 
-
+# Página de login
 @app.route('/login',  methods=['GET', 'POST'])
+# Verifica se o utilizador já está autenticado
 def login():
+    # Pede ao utilizador para preencher os campos de login (username e password)
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-
+        # Verifica se não foram preenchidos os campos, passa a mensagem de erro
+        # e retorna à página de login
         if not username or not password:
             flash('Preencha todos os campos!', 'primary')
             return render_template('login.html')
-
+        # Verifica os utilizador e a password na base de dados
         try:
             db = get_db()
             cursor = db.cursor(dictionary=True)
@@ -78,22 +81,24 @@ def login():
             cursor.close()
 
             if user:
-                # Salvar informações do usuário na sessão
+                # Se o utilizador for encontrado, redirige para a página principal, se não, passa a mensagem aviso
                 session['user_id'] = user['id']
                 session['username'] = user['username']
                 flash('Login bem-sucedido!', 'success')
                 return redirect(url_for('principal'))
             else:
                 flash('Credenciais inválidas!', 'warning')
-
+        # Se ocorrer um erro ao conectar à base de dados, passa a mensagem de erro
         except mysql.connector.Error as err:
             app.logger.error(f"Erro na verificação de login: {err}")
             flash('Erro ao acessar a base de dados.', 'danger')
 
     return render_template('login.html')
 
+# Página de registro de novo utilizador
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    #pede ao utilizador para preencher os campos de registro (username, password, email e photo, sendo a photo opcional)
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
@@ -140,7 +145,7 @@ def register():
 def submit_score():
     if 'user_id' not in session:
         return {'status': 'error', 'message': 'Utilizador não autenticado'}, 401
-
+    # Recebe os dados do JSON enviado pelo frontend e extrai a categoria e pontuação
     data = request.get_json()
     categoria = data.get('categoria')
     pontuacao = data.get('pontuacao')
@@ -149,6 +154,7 @@ def submit_score():
         return {'status': 'error', 'message': 'Dados incompletos'}, 400
 
     try:
+        # Conecta ao banco de dados e insere a pontuação
         db = get_db()
         cursor = db.cursor()
 
@@ -172,6 +178,7 @@ def submit_score():
         cursor.close()
         
 @app.route('/logout')
+#Remove a sessão do utilizador e redireciona para a página de login
 def logout():
     session.clear()
     flash('Você saiu com sucesso!', 'info')
@@ -179,11 +186,13 @@ def logout():
 
 
 @app.route("/")
+# Página inicial que redireciona para a página de login
 def home():
     return render_template('login.html')
 
 
 @app.route('/principal')
+# Página principal que mostra o ranking dos 3 melhores jogadores e os restantes elementos do site
 def principal():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -202,6 +211,7 @@ def principal():
     return render_template("principal.html", top_jogadores=top_jogadores)
 
 @app.route('/Conhecimento_geral')
+#Rota para a página de conhecimento geral
 def Conhecimento_geral():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -209,6 +219,7 @@ def Conhecimento_geral():
     return render_template('Conhecimento_geral.html')
 
 @app.route('/Entretenimento')
+#Rota para a página de entretenimento
 def Entretenimento():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -216,6 +227,7 @@ def Entretenimento():
     return render_template('Entretenimento.html')
 
 @app.route('/Desporto')
+#Rota para a página de desporto
 def Desporto():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -223,6 +235,7 @@ def Desporto():
     return render_template('Desporto.html')
 
 @app.route('/Ciência')
+#Rota para a página de ciência
 def Ciência():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -230,6 +243,7 @@ def Ciência():
     return render_template('Ciência.html')
 
 @app.route('/definicoes')
+# Rota para a página de definições
 def definicoes():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -237,6 +251,7 @@ def definicoes():
     return render_template('definicoes.html')
 
 @app.route('/definicoes_base')
+# Rota para a página de definições base
 def definicoes_base():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -244,6 +259,7 @@ def definicoes_base():
     return render_template('definicoes_base.html')
  
 @app.route('/rank_estatisticas')
+# Rota para a página base do rank e  das estatísticas
 def ranke_estatisticas():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -251,10 +267,11 @@ def ranke_estatisticas():
     return render_template('rank_estatisticas.html')
 
 @app.route('/rank')
+# Rota para a página de ranking
 def ranking():
     db = get_db()
     cursor = db.cursor(dictionary=True)
-
+# Obtém o ranking dos utilizadores com base na pontuação total na tabela de pontuações na base de dados
     cursor.execute("""
     SELECT u.username, SUM(p.pontuacao) AS total_pontuacao
     FROM pontuacoes p
@@ -269,6 +286,7 @@ def ranking():
 
 
 @app.route('/estatisticas')
+# Rota para a página de estatísticas do utilizador
 def estatisticas():
     user_id = session.get('user_id')
     if not user_id:
@@ -289,14 +307,14 @@ def estatisticas():
     # Usa o dicionário global CATEGORIAS_NOME
     from app import CATEGORIAS_NOME  # ou garante que está acessível aqui
 
-    # Define o máximo possível por categoria
+    # Define o máximo de pontos possível por categoria
     maximos_categoria = {
         'Conhecimento_geral': 100,
         'Entretenimento': 100,
         'Desporto': 100,
         'Ciência': 100
     }
-
+    # Calcula o progresso de cada categoria
     progresso = {}
     for row in categoria_stats:
         nome_categoria = CATEGORIAS_NOME.get(row['categoria'], 'Outra')
@@ -321,6 +339,7 @@ def estatisticas():
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
+# Rota para editar o perfil do utilizador	
 def edit_profile():
     if 'user_id' not in session:
         flash('Por favor, faça login primeiro!', 'warning')
@@ -352,6 +371,7 @@ def edit_profile():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], photo_filename))
 
         try:
+            # Atualiza os dados do utilizador na base de dados
             update_query = "UPDATE users SET username = %s, password = %s, email = %s"
             params = [username, password, email]
 
@@ -395,6 +415,7 @@ CATEGORIAS = {
 CATEGORIAS_NOME = {v: k.capitalize() for k, v in CATEGORIAS.items()}
 
 @app.route('/save_score', methods=['POST'])
+# Rota para salvar a pontuação do utilizador
 def save_score():
     data = request.get_json()  # <- RECEBER JSON
     pontuacao = data.get('pontuacao')
