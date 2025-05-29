@@ -271,32 +271,76 @@
     }
 
     .marquee-container {
-  width: 100%;
-  overflow: hidden;
-  background-color: white;
-  position: relative;
-  height: 2.5rem;
-}
+      width: 100%;
+      overflow: hidden;
+      background-color: white;
+      position: relative;
+      height: 2.5rem;
+    }
 
-.marquee-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll-loop 10s linear infinite;
-}
+    .marquee-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-loop 10s linear infinite;
+    }
 
-.marquee-track span {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #7b6299;
-  padding-right: 4rem; /* espaço entre repetições */
-}
+    .marquee-track span {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #7b6299;
+      padding-right: 4rem; /* espaço entre repetições */
+    }
 
-@keyframes scroll-loop {
-  0% {
-    transform: translateX(110%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
+    @keyframes scroll-loop {
+      0% {
+        transform: translateX(110%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .podium {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .podium li {
+      background-color: white;
+      color: #333;
+      border-radius: 15px;
+      padding: 20px 25px;
+      min-width: 180px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 1.2rem;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .podium li:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Destaques para os 3 primeiros colocados */
+    .podium li:nth-child(1) {
+      background: #fff8d6;
+      border: 2px solid gold;
+    }
+
+    .podium li:nth-child(2) {
+      background: #f0f0f5;
+      border: 2px solid silver;
+    }
+
+    .podium li:nth-child(3) {
+      background: #f7e4dc;
+      border: 2px solid #cd7f32; /* Bronze */
+    }
