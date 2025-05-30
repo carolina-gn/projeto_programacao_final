@@ -37,13 +37,6 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
  
-    /* Estilo para o elemento <canvas> (onde o gráfico é renderizado) */
-    canvas {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
 
     /* Título (h3) estilizado com fundo azul claro e texto roxo */
     h3 {
@@ -69,10 +62,6 @@
       border: 3px solid #f9fbae;
     }
 
-    /* Borda específica para o canvas do gráfico */
-    #userProgressChart {
-      border: 3px solid #f9fbae;
-    }
 
     /* Estilo da caixa principal que contém o logo */
     .box1 {
