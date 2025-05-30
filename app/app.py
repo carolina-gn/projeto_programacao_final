@@ -435,14 +435,11 @@ def save_score():
             (user_id, int(categoria), int(pontuacao))
         )
         db.commit()
-        return jsonify({"message": "Pontuação salva com sucesso!"}), 200
-    except mysql.connector.IntegrityError:
-        db.rollback()
-        return jsonify({"message": "Pontuação já existe para esta categoria!"}), 409
+        return jsonify({"message": "Pontuação guardada com sucesso!"}), 200
     except mysql.connector.Error as err:
         db.rollback()
-        app.logger.error(f"Erro ao salvar pontuação: {err}")
-        return jsonify({"message": "Erro ao salvar pontuação."}), 500
+        app.logger.error(f"Erro ao guardar pontuação: {err}")
+        return jsonify({"message": "Erro ao guardar pontuação."}), 500
     finally:
         cursor.close()
 

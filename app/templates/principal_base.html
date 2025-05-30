@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <title>Quizzify</title>
+
+  <!-- importação do bootstrap para estilos e componentes -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- importação do css com os estilos -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/principal.css') }}">
 </head>
 <body>
+
+  <!-- Script do Bootstrap para funcionalidades como o carrossel -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
+  <!-- Cabeçalho com texto em movimento -->
   <header>
     <div class="marquee-container">
   <div class="marquee-track">
@@ -18,15 +25,20 @@
 </div>
   </header>
 
-  
+  <!-- Wrapper principal com navbar e conteúdo -->
   <div class="wrapper">
     <nav class="sidebar" id="sidebar">
+
+      <!-- Botão para recolher/expandir a sidebar -->
       <button class="toggle-btn" id="toggleBtn">☰</button>
 
+      <!-- imagem do logotipo para a navbar -->
       <img src="{{ url_for('static', filename='images/ponto_de_interrogação_logo.png') }}" alt="ponto de interrogação">
 
+      <!-- botão de logout -->
       <button><a href="{{ url_for('logout') }}"><span>👤 Logout</span></a></button>
 
+      <!-- Dropdown personalizado para categorias -->
       <div class="custom-dropdown">
         <button class="btn btn-secondary" id="toggleCategorias">
           <span class="icon">📚</span>
@@ -34,6 +46,7 @@
           <span class="arrow">&#9662;</span>
         </button>
 
+        <!-- Lista de categorias e link para redirecionar para as respetivas páginas-->
         <ul class="dropdown-content" id="categoriasMenu">
           <li><a href="{{ url_for('Conhecimento_geral') }}">🌍 Conhecimento Geral</a></li>
           <li><a href="{{ url_for('Entretenimento') }}">🎬 Entretenimento</a></li>
@@ -42,20 +55,22 @@
         </ul>
       </div>
 
-
+      <!-- Botões para outras páginas -->
       <button><a href="{{ url_for('ranking') }}"><span>🏆 Rank</span></a></button>
 
       <button><a href="{{ url_for('estatisticas') }}"><span>📊 Estatísticas</span></a></button>
       
       <button><a href="{{ url_for('definicoes') }}" style="margin-top: auto;"><span>⚙ Definições</span></a></button>
     </nav>
+
+    <!-- Bloco de conteúdo dinâmico (definido nas páginas que estendem este template) -->
     <div class="content">
       {% block content %}
-      <!-- Content will be injected here -->
+      
       {% endblock %}
     </div>
   
-
+ <!-- Script para alternar a visibilidade da sidebar -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const toggleBtn = document.getElementById('toggleBtn');
@@ -67,6 +82,7 @@
   });
 </script>
 
+<!-- Script para alternar o menu de categorias -->
 <script>
   const toggleCategorias = document.getElementById('toggleCategorias');
   const dropdownWrapper = document.querySelector('.custom-dropdown');

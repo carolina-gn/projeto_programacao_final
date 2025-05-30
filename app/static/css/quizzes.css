@@ -1,14 +1,17 @@
    
-   body {
+  /* Define a imagem de fundo para toda a página */
+  body {
       background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");
     }
 
+    /* Centraliza o conteúdo do quiz tanto horizontal quanto verticalmente */
     .quizz-container {
       display: flex;
       justify-content: center; 
       align-items: center;    
     }
 
+    /* Caixa principal onde está o conteúdo do quiz */
     .quiz-card {
       background-color: rgba(255, 255, 255, 0.799);
       color: black;
@@ -20,6 +23,7 @@
       border: 3px solid #f9fbae;
     }
 
+    /* Título da pergunta, centralizado e em negrito */
     .question-title {
       font-size: 1.5rem;
       font-weight: bold;
@@ -27,6 +31,7 @@
       text-align: center;
     }
 
+    /* Botões de resposta */
     .option-btn {
       border-radius: 12px;
       padding: 15px;
@@ -39,37 +44,41 @@
       border: none;
     }
     
-    .btn-red { background-color: #e74c3c; }
+    /* Cores dos botões */
     .btn-purple { background-color: #7b6299; }
-    .btn-green { background-color: #2ecc71; }
-    .btn-yellow { background-color: #f1c40f; color: #222; }
-
+    
+    /* Cor de fundo para respostas corretas */
     .correct {
       background-color: #7beab8 !important;
     }
 
+    /* Cor de fundo para respostas erradas */
     .wrong {
       background-color: #e74c3c !important;
     }
 
+    /* Estilo da pontuação atual */
     .score {
       font-weight: bold;
       margin-bottom: 15px;
       text-align: center;
     }
 
+    /* Layout dos botões de navegação (próxima pergunta e voltar ao início) */
     .nav-btns {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
     }
     
+    /* Conteúdo principal com padding */
     .content {
       flex: 1;
       padding: 20px;
       align-items: center
     }
 
+    /* Caixa que exibe o logo */
     .box1 {
       background: #cde9f3;
       color: #333;
@@ -79,6 +88,7 @@
       font-size: 1.2rem;
     }
 
+    /* Estilo do botão "Início" */
     #homeBtn {
       background-color: #7beab8; /* Verde exemplo */
       color: white;
