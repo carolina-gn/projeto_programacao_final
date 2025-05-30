@@ -1,8 +1,12 @@
 
+   
+   /* Define a imagem de fundo da página e a cor do texto padrão */
    body {
       background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");
       color: white;
     }
+
+    /* Estiliza a tag <main> para usar layout em coluna com espaçamento entre elementos */
     main {
       flex: 1;
       padding: 30px;
@@ -10,6 +14,8 @@
       flex-direction: column;
       gap: 20px;
     }
+
+    /* Estiliza o cabeçalho da página */
      header {
       height: 60px;
       display: flex;
@@ -19,12 +25,8 @@
       color: #333;
       border-bottom: 1px solid #ccc;
     }
-    header img {
-      height: 50px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(114, 91, 183, 0.1);
-    background-color: #6a11cb;
-    }
+
+    /* Estilo do corpo dos cartões (cards), como caixas de conteúdo */
     .card-body {
       background-color: white;
       color: black;
@@ -33,9 +35,9 @@
       max-width: 700px;
       width: 100%;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      
     }
  
+    /* Estilo para o elemento <canvas> (onde o gráfico é renderizado) */
     canvas {
       background: white;
       padding: 20px;
@@ -43,6 +45,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
+    /* Título (h3) estilizado com fundo azul claro e texto roxo */
     h3 {
       background-color: #cde9f3; 
       padding: 10px;             
@@ -51,12 +54,14 @@
       font-weight: bold;
     }
 
+    /* Espaçamento e cor para seções de conteúdo */
     .mb-3 {
       padding: 10px;             
       color: #7b6299;             
       border-radius: 5px;
     }
 
+    /* Caixa de progresso com fundo translúcido e borda amarela */
     .progress-wrapper {
       background-color: rgba(255, 255, 255, 0.7);
       border-radius: 10px;
@@ -64,10 +69,12 @@
       border: 3px solid #f9fbae;
     }
 
+    /* Borda específica para o canvas do gráfico */
     #userProgressChart {
       border: 3px solid #f9fbae;
     }
 
+    /* Estilo da caixa principal que contém o logo */
     .box1 {
       background: #cde9f3;
       color: #333;
