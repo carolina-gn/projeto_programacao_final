@@ -1,123 +1,138 @@
 
-    :root {
-      --sidebar-width: 240px;
-      --sidebar-width-collapsed: 65px;
-    }
+:root {
+  --sidebar-width: 240px;
+  --sidebar-width-collapsed: 65px;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Reset geral de margens e box-sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      min-height: 100vh;
-      background-image: url("{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      color: white;
-      display: flex;
-      flex-direction: column;
-    }
+/* Estilo base do corpo da página */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  background-image: url("{{ url_for('static', filename='images/fundo_com_pontos_de_interrogacao.png') }}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
 
-    header {
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      color: #333;
-      border-bottom: 1px solid #ccc;
-    }
+/* Estilo do cabeçalho */
+header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+}
 
-    header img {
-      height: 50px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(114, 91, 183, 0.1);
-      background-color: #6a11cb;
-    }
+/* Estilo da imagem no cabeçalho (caso seja usada) */
+header img {
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(114, 91, 183, 0.1);
+  background-color: #6a11cb;
+}
 
-    .wrapper {
-      flex: 1;
-      display: flex;
-      height: calc(100% - 60px);
-    }
+/* Wrapper geral da página (sidebar + conteúdo principal) */
+.wrapper {
+  flex: 1;
+  display: flex;
+  height: calc(100% - 60px); /* altura restante depois do cabeçalho */
+}
 
-    .sidebar {
-      background-color: #2c2f4a;
-      width: var(--sidebar-width);
-      transition: width 0.3s ease;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      overflow: hidden;
-    }
+/* Sidebar lateral */
+.sidebar {
+  background-color: #2c2f4a;
+  width: var(--sidebar-width);
+  transition: width 0.3s ease;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
 
-    .sidebar.collapsed {
-      width: var(--sidebar-width-collapsed);
-    }
+/* Sidebar em modo colapsado (reduzida) */
+.sidebar.collapsed {
+  width: var(--sidebar-width-collapsed);
+}
 
-    .toggle-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.8rem;
-      cursor: pointer;
-      align-self: flex-end;
-      margin-bottom: 20px;
-    }
+/* Botão para alternar (expandir/colapsar) a sidebar */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
 
-    .sidebar button,
-    .sidebar li {
-      background: #44476a;
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-      list-style: none;
-      text-align: left;
-      transition: background 0.2s;
-    }
+/* Estilo dos botões e itens da sidebar */
+.sidebar button,
+.sidebar li {
+  background: #44476a;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+  text-align: left;
+  transition: background 0.2s;
+}
 
-    .sidebar button:hover,
-    .sidebar li:hover {
-      background: #5a5ea0;
-    }
+/* Efeito hover nos itens da sidebar */
+.sidebar button:hover,
+.sidebar li:hover {
+  background: #5a5ea0;
+}
 
-    .sidebar ul {
-      padding-left: 0;
-    }
+/* Remove indentação das listas na sidebar */
+.sidebar ul {
+  padding-left: 0;
+}
 
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      display: block;
-    }
+/* Estilo dos links dentro da sidebar */
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
 
-    .sidebar.collapsed button span,
-    .sidebar.collapsed li span,
-    .sidebar.collapsed strong span {
-      display: none;
-    }
+/* Esconde os textos da sidebar quando esta está colapsada */
+.sidebar.collapsed button span,
+.sidebar.collapsed li span,
+.sidebar.collapsed strong span {
+  display: none;
+}
 
-    main {
-      flex: 1;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+/* Conteúdo principal da página */
+main {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    .box {
-      background: rgba(255, 255, 255, 0.9);
-      color: #333;
-      border-radius: 12px;
-      padding: 25px;
-      font-size: 1.2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+/* Caixas de conteúdo com fundo branco semi-transparente */
+.box {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 12px;
+  padding: 25px;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

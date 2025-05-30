@@ -1,15 +1,20 @@
-{% extends "definicoes_base.html" %}
-{% block content %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/definições.css') }}">
-        <div class="box">
-            <h2>Definições</h2>
-            <p>Esta é a página de definições. Aqui você pode ajustar suas preferências.</p>
-            <p>Mais opções e configurações podem ser adicionadas aqui.</p>
-        </div>
-    
-        <div class="box">
-            <h2>Outras Definições</h2>
-            <p>Você pode adicionar mais seções ou opções conforme necessário.</p>
-        </div>
+{% extends "definicoes_base.html" %}  <!-- Herda o layout base da página de definições base-->
 
-    {% endblock %}
+{% block content %}
+    <!-- Importa a folha de estilos específica para esta página -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/definições.css') }}">
+
+    <!-- PRIMEIRA CAIXA DE CONTEÚDO COM TEXTO INFORMATIVO -->
+    <div class="box">
+        <h2>Definições</h2>
+        <p>Esta é a página de definições. Aqui você pode ajustar suas preferências.</p>
+        <p>Mais opções e configurações podem ser adicionadas aqui.</p>
+    </div>
+    
+    <!-- SEGUNDA CAIXA COM TEXTO ADICIONAL -->
+    <div class="box">
+        <h2>Outras Definições</h2>
+        <p>Você pode adicionar mais seções ou opções conforme necessário.</p>
+    </div>
+
+{% endblock %}

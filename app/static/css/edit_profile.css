@@ -1,32 +1,37 @@
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png");
+  background-image: url("/static/images/fundo_com_pontos_de_interrogacao.png"); /* Imagem de fundo */
   background-size: cover;
   background-position: center;
   color: #333;
 }
 
+/* Estilo para o título principal */
 h1 {
   font-weight: bold;
-  color: #7b6299;
+  color: #7b6299;             
   border-radius: 12px;
   padding: 10px 0;
   margin-bottom: 30px;
 }
 
+/* Estilo geral do formulário */
 form {
-  background: rgba(255, 255, 255, 0.5);
-  border: 3px solid #f9fbae;
+  background: rgba(255, 255, 255, 0.5); 
+  border: 3px solid #f9fbae;             
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
   padding: 30px;
 }
 
+/* Estilo das etiquetas dos campos */
 .form-label {
   font-weight: 600;
   color: #2c2f4a;
 }
 
+/* Estilo dos campos de input */
 .form-control {
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -34,13 +39,15 @@ form {
   font-size: 1rem;
 }
 
+/* Estilo dos campos de input ao focar */
 .form-control:focus {
   border-color: #7b6299;
   box-shadow: 0 0 0 0.2rem rgba(123, 98, 153, 0.25);
 }
 
+/* Estilo do botão "Atualizar Perfil" */
 .btn-primary {
-  background-color: #7b6299;
+  background-color: #7b6299; 
   border: none;
   font-weight: bold;
   border-radius: 10px;
@@ -49,15 +56,17 @@ form {
 }
 
 .btn-primary:hover {
-  background-color: #684d89;
+  background-color: #684d89;  
   color: #fff;
 }
 
+/* Estilo dos alertas de mensagens */
 .alert {
   border-radius: 8px;
   font-weight: 500;
 }
 
+/* Estilo da imagem da foto de perfil */
 img {
   display: block;
   max-width: 100px;
@@ -65,7 +74,7 @@ img {
   margin-bottom: 10px;
 }
 
-/* Tornar o formulário mais agradável em ecrãs pequenos */
+/* Responsividade: formulário mais compacto em ecrãs pequenos */
 @media (max-width: 576px) {
   form {
     padding: 20px;
