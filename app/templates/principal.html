@@ -1,9 +1,12 @@
 {% extends "principal_base.html" %}
 {% block content %}
 <main class="content">
+
+      <!-- Secção com o logo principal -->
       <section class="box1"> <img src="{{ url_for('static', filename='images/quizzify_logo_principal.png') }}" style="display: block; margin: 0 auto"; alt="Logo Quiz" width="300"></section>
       <section class="box">
-       
+
+       <!-- Secção com exemplos de perguntas -->
         <h2>Perguntas tipo</h2>
         
         <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_logo.png') }}" alt="">
@@ -57,16 +60,22 @@
         </div>
 
       </section>
+
+      <!-- Secção com carrossel de fun facts -->
       <section class="box">
         <h2>Fun Fact</h2>
 
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
+
+            <!-- Botões de navegação do carrossel -->
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
           </div>
+
+          <!-- Imagens e fun facts -->
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="https://c.files.bbci.co.uk/11F73/production/_120878537_4cfca0d7-2b27-474f-93b7-4c31269c5cdf.jpg" class="d-block w-100" alt="polvo">
@@ -97,6 +106,8 @@
               </div>
             </div>
           </div>
+
+          <!-- Botões de controlo -->
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -107,8 +118,12 @@
           </button>
         </div>
       </section>
+
+      <!-- Secção com podio dos 3 melhores jogadores -->
       <section class="box">
             <h2>Pódio</h2>
+
+            <!-- Verifica se existem jogadores no ranking -->
             {% if top_jogadores %}
               <ol class="podium">
                 {% for user in top_jogadores %}
@@ -120,6 +135,8 @@
             {% else %}
               <p>Nenhum jogador no ranking ainda.</p>
             {% endif %}
+
+        <!-- logo do podio -->
         <img class = "img-logo" src="{{ url_for('static', filename='images/cerebro_com_taça_logo.png') }}" alt="">
       </section>   
     </main>
